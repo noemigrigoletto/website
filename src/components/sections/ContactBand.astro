@@ -1,0 +1,29 @@
+---
+import ButtonLink from '../ui/ButtonLink.astro';
+import { site } from '../../data/site';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Iniziamo da ciò che serve a te',
+	description = 'Se vuoi capire quale percorso può essere più adatto, puoi scrivermi, chiamarmi o prenotare direttamente una prima visita.',
+} = Astro.props;
+---
+
+<section class="contact-band" aria-labelledby="contact-band-title">
+	<div class="contact-band__decoration" aria-hidden="true"></div>
+	<div class="page-shell contact-band__inner">
+		<div>
+			<p class="eyebrow">Parliamone</p>
+			<h2 id="contact-band-title">{title}</h2>
+			<p>{description}</p>
+		</div>
+		<div class="contact-band__actions">
+			<ButtonLink href={site.bookingUrl} external>Prenota una prima visita</ButtonLink>
+			<ButtonLink href="/contattami" variant="secondary">Contattami</ButtonLink>
+		</div>
+	</div>
+</section>

@@ -1,11 +1,626 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ButtonLink from '../components/ui/ButtonLink.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import ContactBand from '../components/sections/ContactBand.astro';
+import { journeySteps, serviceAreas } from '../data/services';
+import { site } from '../data/site';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout
+	title="Noemi Grigoletto | Dietista"
+	description="Percorsi nutrizionali personalizzati per costruire un rapporto consapevole, equilibrato e sereno con l’alimentazione. Consulenze online e in ambulatorio."
+>
+	<section class="hero" aria-labelledby="hero-title">
+		<div class="hero__leaf hero__leaf--one" aria-hidden="true"></div>
+		<div class="hero__leaf hero__leaf--two" aria-hidden="true"></div>
+		<div class="page-shell hero__grid">
+			<div class="hero__content">
+				<p class="eyebrow">Dietista · Consulenze online e in ambulatorio</p>
+				<h1 id="hero-title">Il cibo può tornare a essere un <em>alleato.</em></h1>
+				<p class="hero__lead">Un percorso nutrizionale fatto di ascolto e consapevolezza, lontano da diete rigide e rinunce.</p>
+				<div class="hero__actions">
+					<ButtonLink href={site.bookingUrl} external>Prenota una prima visita</ButtonLink>
+					<ButtonLink href="/contattami" variant="secondary">Contattami</ButtonLink>
+				</div>
+			</div>
+
+			<div class="hero__portrait">
+				<div class="hero__portrait-shape" aria-hidden="true"></div>
+				<div class="hero__portrait-ring" aria-hidden="true"></div>
+				<img src={site.portrait.src} alt={site.portrait.alt} width="1280" height="1351" fetchpriority="high" />
+				<p class="hero__signature" aria-hidden="true">Noemi</p>
+			</div>
+		</div>
+	</section>
+
+	<aside class="quick-contact" aria-label="Contatti rapidi">
+		<div class="page-shell quick-contact__inner">
+			<p><span>Scrivimi</span><a href={`mailto:${site.email}`}>{site.email}</a></p>
+			<p><span>Chiamami</span><a href={site.phoneHref}>{site.phoneDisplay}</a></p>
+			<p><span>Seguimi</span>{site.socials.map((social, index) => <><a href={social.href} target="_blank" rel="noreferrer">{social.label}</a>{index === 0 && <i aria-hidden="true">·</i>}</>)}</p>
+		</div>
+	</aside>
+
+	<section class="intro-section">
+		<div class="page-shell intro-section__grid">
+			<div class="intro-section__title">
+				<p class="eyebrow">Piacere, sono Noemi</p>
+				<h2>La nutrizione, prima di tutto, riguarda la persona.</h2>
+			</div>
+			<div class="intro-section__copy">
+				<p class="intro-section__lead">Sono una dietista laureata con lode all’Università di Padova. Nel mio lavoro unisco competenze cliniche ed educazione alimentare per costruire percorsi realmente sostenibili.</p>
+				<p>Anche la mia storia personale mi ha insegnato quanto falsi miti e mode alimentari possano allontanarci dall’ascolto del corpo. Oggi accompagno le persone verso scelte più consapevoli, senza trasformare il cibo in una continua rinuncia.</p>
+				<ButtonLink href="/chi-sono" variant="text">Conosci meglio la mia storia</ButtonLink>
+			</div>
+		</div>
+	</section>
+
+	<section class="philosophy-section" aria-labelledby="philosophy-title">
+		<div class="philosophy-section__scribble" aria-hidden="true">
+			<svg viewBox="0 0 220 170"><path d="M20 122C39 29 181 11 194 77c11 56-90 86-146 55C3 107 23 58 72 35" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>
+		</div>
+		<div class="page-shell philosophy-section__inner">
+			<p class="eyebrow">Il mio approccio</p>
+			<h2 id="philosophy-title">Non una dieta da seguire.<br /><em>Un equilibrio da costruire.</em></h2>
+			<div class="philosophy-section__copy">
+				<p>Credo nel potere dell’educazione alimentare: capire ciò che ci nutre permette di fare scelte più libere e di trasformare la sana alimentazione in un’abitudine spontanea.</p>
+				<p>Il percorso parte dai tuoi bisogni, dalla tua quotidianità e dagli obiettivi che definiamo insieme. Senza scorciatoie, ma con strumenti concreti da portare nella vita di ogni giorno.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="services-section">
+		<div class="page-shell">
+			<SectionHeading
+				eyebrow="Di cosa mi occupo"
+				title="Esigenze diverse, un percorso costruito con cura."
+				description="Dall’educazione alimentare alle necessità cliniche o legate alle diverse fasi della vita: ogni intervento nasce dalla tua situazione specifica."
+			/>
+			<div class="services-grid">
+				{serviceAreas.map((service) => (
+					<article class:list={['service-card', `service-card--${service.accent}`]}>
+						<span class="service-card__number">{service.number}</span>
+						<h3>{service.title}</h3>
+						<p>{service.description}</p>
+					</article>
+				))}
+			</div>
+			<div class="services-section__link">
+				<ButtonLink href="/di-cosa-mi-occupo" variant="secondary">Scopri di cosa mi occupo</ButtonLink>
+			</div>
+		</div>
+	</section>
+
+	<section class="journey-section">
+		<div class="page-shell">
+			<SectionHeading
+				eyebrow="Il percorso nutrizionale"
+				title="Un passo alla volta, con una direzione condivisa."
+				description="La consulenza non si esaurisce in un piano alimentare: è un percorso di conoscenza, verifica e adattamento."
+			/>
+			<ol class="journey-list">
+				{journeySteps.map((step) => (
+					<li>
+						<span>{step.number}</span>
+						<div><h3>{step.title}</h3><p>{step.description}</p></div>
+					</li>
+				))}
+			</ol>
+			<ButtonLink href="/consulenze" variant="text">Scopri come funziona la consulenza</ButtonLink>
+		</div>
+	</section>
+
+	<section class="mission-section" aria-labelledby="mission-title">
+		<div class="mission-section__shape" aria-hidden="true"></div>
+		<div class="page-shell mission-section__inner">
+			<p class="eyebrow">La mia missione</p>
+			<blockquote id="mission-title">“Aiutarti a rendere l’alimentazione un gesto di cura, consapevole ma naturale.”</blockquote>
+			<p>Non conta la velocità con cui si raggiunge un obiettivo. Conta costruire abitudini che possano davvero accompagnarti nel tempo.</p>
+		</div>
+	</section>
+
+	<ContactBand />
+</BaseLayout>
+
+<style>
+	.hero {
+		position: relative;
+		overflow: hidden;
+		background: var(--color-peach-light);
+	}
+
+	.hero__grid {
+		display: grid;
+		min-height: min(48rem, calc(100svh - 6rem));
+		grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
+		align-items: center;
+		gap: clamp(2rem, 5vw, 6rem);
+		padding-top: clamp(4rem, 8vw, 8rem);
+	}
+
+	.hero__content {
+		position: relative;
+		z-index: 2;
+		padding-bottom: clamp(4rem, 8vw, 8rem);
+	}
+
+	.hero h1 {
+		max-width: 48rem;
+		margin-bottom: 1.75rem;
+	}
+
+	.hero h1 em,
+	.philosophy-section em {
+		color: var(--color-terracotta);
+		font-weight: 500;
+	}
+
+	.hero__lead {
+		max-width: 38rem;
+		margin-bottom: 2rem;
+		color: var(--color-ink-soft);
+		font-size: clamp(1.15rem, 1.8vw, 1.38rem);
+		line-height: 1.55;
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.hero__portrait {
+		position: relative;
+		align-self: end;
+		justify-self: center;
+		width: min(100%, 34rem);
+	}
+
+	.hero__portrait img {
+		position: relative;
+		z-index: 2;
+		width: 100%;
+		height: auto;
+		filter: drop-shadow(0 1.5rem 2rem rgb(39 52 45 / 0.12));
+	}
+
+	.hero__portrait-shape {
+		position: absolute;
+		z-index: 0;
+		right: -8%;
+		bottom: 0;
+		width: 108%;
+		height: 84%;
+		border-radius: 48% 52% 0 0 / 35% 38% 0 0;
+		background: var(--color-sage);
+	}
+
+	.hero__portrait-ring {
+		position: absolute;
+		z-index: 1;
+		top: 7%;
+		left: -12%;
+		width: 13rem;
+		height: 13rem;
+		border: 1px solid var(--color-forest);
+		border-radius: 46% 54% 60% 40% / 51% 38% 62% 49%;
+		transform: rotate(-18deg);
+	}
+
+	.hero__signature {
+		position: absolute;
+		z-index: 3;
+		right: -1rem;
+		bottom: 2rem;
+		margin: 0;
+		color: var(--color-paper);
+		font-family: var(--font-display);
+		font-size: 2.3rem;
+		font-style: italic;
+		transform: rotate(-7deg);
+	}
+
+	.hero__leaf {
+		position: absolute;
+		border: 1px solid rgb(39 52 45 / 0.22);
+		border-radius: 100% 0 100% 0;
+	}
+
+	.hero__leaf--one {
+		top: 8%;
+		right: -3rem;
+		width: 10rem;
+		height: 15rem;
+		transform: rotate(28deg);
+	}
+
+	.hero__leaf--two {
+		bottom: 6%;
+		left: -5rem;
+		width: 9rem;
+		height: 13rem;
+		transform: rotate(-40deg);
+	}
+
+	.quick-contact {
+		border-block: var(--border);
+		background: var(--color-paper);
+	}
+
+	.quick-contact__inner {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.quick-contact p {
+		display: flex;
+		min-height: 6.25rem;
+		align-items: center;
+		gap: 0.55rem;
+		margin: 0;
+		padding: 1.2rem clamp(1rem, 3vw, 2.5rem);
+		font-size: 0.95rem;
+	}
+
+	.quick-contact p + p {
+		border-left: var(--border);
+	}
+
+	.quick-contact span {
+		margin-right: auto;
+		color: var(--color-forest);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.13em;
+		text-transform: uppercase;
+	}
+
+	.quick-contact a {
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.quick-contact a:hover {
+		text-decoration: underline;
+	}
+
+	.quick-contact i {
+		font-style: normal;
+	}
+
+	.intro-section {
+		padding-block: var(--section-space);
+	}
+
+	.intro-section__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.75fr);
+		gap: clamp(3rem, 8vw, 8rem);
+	}
+
+	.intro-section h2 {
+		max-width: 46rem;
+		margin: 0;
+	}
+
+	.intro-section__copy {
+		padding-top: 2.75rem;
+	}
+
+	.intro-section__copy p {
+		color: var(--color-ink-soft);
+	}
+
+	.intro-section__copy .intro-section__lead {
+		color: var(--color-ink);
+		font-size: 1.2rem;
+	}
+
+	.philosophy-section {
+		position: relative;
+		overflow: hidden;
+		background: var(--color-sage);
+	}
+
+	.philosophy-section__inner {
+		padding-block: var(--section-space);
+	}
+
+	.philosophy-section h2 {
+		max-width: 59rem;
+		margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+	}
+
+	.philosophy-section__copy {
+		display: grid;
+		max-width: 60rem;
+		grid-template-columns: 1fr 1fr;
+		gap: clamp(2rem, 5vw, 5rem);
+		margin-left: auto;
+	}
+
+	.philosophy-section__copy p {
+		margin: 0;
+		font-size: 1.08rem;
+	}
+
+	.philosophy-section__scribble {
+		position: absolute;
+		right: -1rem;
+		bottom: 0;
+		width: min(18rem, 30vw);
+		color: rgb(39 52 45 / 0.35);
+		transform: rotate(-12deg);
+	}
+
+	.services-section {
+		background: var(--color-paper);
+		padding-block: var(--section-space);
+	}
+
+	.services-grid {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		border-top: var(--border);
+		border-left: var(--border);
+	}
+
+	.service-card {
+		position: relative;
+		grid-column: span 2;
+		min-height: 20rem;
+		border-right: var(--border);
+		border-bottom: var(--border);
+		padding: clamp(1.5rem, 3vw, 2.25rem);
+	}
+
+	.service-card:nth-child(4),
+	.service-card:nth-child(5) {
+		grid-column: span 3;
+	}
+
+	.service-card::before {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 5.5rem;
+		height: 5.5rem;
+		border-radius: 0 0 0 100%;
+		content: '';
+	}
+
+	.service-card--sage::before { background: var(--color-sage); }
+	.service-card--peach::before { background: var(--color-peach); }
+	.service-card--butter::before { background: var(--color-butter); }
+	.service-card--rose::before { background: var(--color-rose); }
+	.service-card--mint::before { background: var(--color-sage-light); }
+
+	.service-card__number {
+		display: inline-block;
+		margin-bottom: 5rem;
+		color: var(--color-forest);
+		font-size: 0.74rem;
+		font-weight: 700;
+		letter-spacing: 0.15em;
+	}
+
+	.service-card h3 {
+		max-width: 16rem;
+		margin-bottom: 1rem;
+	}
+
+	.service-card p {
+		max-width: 23rem;
+		margin-bottom: 0;
+		color: var(--color-ink-soft);
+	}
+
+	.services-section__link {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 2rem;
+	}
+
+	.journey-section {
+		padding-block: var(--section-space);
+	}
+
+	.journey-list {
+		margin: 0 0 2rem;
+		padding: 0;
+		list-style: none;
+	}
+
+	.journey-list li {
+		display: grid;
+		grid-template-columns: 5rem minmax(0, 1fr);
+		gap: clamp(1.5rem, 4vw, 4rem);
+		border-top: var(--border);
+		padding-block: 2rem;
+	}
+
+	.journey-list li:last-child {
+		border-bottom: var(--border);
+	}
+
+	.journey-list li > span {
+		display: grid;
+		width: 3.1rem;
+		height: 3.1rem;
+		place-items: center;
+		border: 1px solid var(--color-forest);
+		border-radius: 50%;
+		color: var(--color-forest);
+		font-family: var(--font-display);
+		font-size: 1.35rem;
+	}
+
+	.journey-list div {
+		display: grid;
+		grid-template-columns: minmax(12rem, 0.6fr) minmax(18rem, 1fr);
+		gap: 2rem;
+		align-items: baseline;
+	}
+
+	.journey-list h3,
+	.journey-list p {
+		margin: 0;
+	}
+
+	.journey-list p {
+		max-width: 38rem;
+		color: var(--color-ink-soft);
+	}
+
+	.mission-section {
+		position: relative;
+		overflow: hidden;
+		background: var(--color-butter);
+	}
+
+	.mission-section__inner {
+		position: relative;
+		z-index: 1;
+		padding-block: var(--section-space);
+		text-align: center;
+	}
+
+	.mission-section blockquote {
+		max-width: 59rem;
+		margin: 0 auto 2rem;
+		font-family: var(--font-display);
+		font-size: clamp(2.5rem, 5vw, 5rem);
+		font-weight: 500;
+		letter-spacing: -0.035em;
+		line-height: 1.08;
+	}
+
+	.mission-section p:last-child {
+		max-width: 40rem;
+		margin: 0 auto;
+		font-size: 1.08rem;
+	}
+
+	.mission-section__shape {
+		position: absolute;
+		top: 12%;
+		left: -5rem;
+		width: 20rem;
+		height: 26rem;
+		border: 1px solid rgb(39 52 45 / 0.25);
+		border-radius: 100% 0 100% 0;
+		transform: rotate(30deg);
+	}
+
+	@media (max-width: 64rem) {
+		.hero__grid {
+			min-height: auto;
+			grid-template-columns: 1fr 0.8fr;
+		}
+
+		.hero__signature {
+			display: none;
+		}
+
+		.quick-contact__inner {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.quick-contact p:last-child {
+			grid-column: 1 / -1;
+			border-top: var(--border);
+			border-left: 0;
+		}
+
+		.service-card,
+		.service-card:nth-child(4),
+		.service-card:nth-child(5) {
+			grid-column: span 3;
+		}
+
+		.service-card:last-child {
+			grid-column: span 6;
+		}
+	}
+
+	@media (max-width: 48rem) {
+		.hero__grid {
+			grid-template-columns: 1fr;
+			padding-top: 4rem;
+		}
+
+		.hero__content {
+			padding-bottom: 0;
+		}
+
+		.hero__portrait {
+			width: min(100%, 27rem);
+		}
+
+		.hero__actions {
+			display: grid;
+		}
+
+		.quick-contact__inner,
+		.intro-section__grid,
+		.philosophy-section__copy {
+			grid-template-columns: 1fr;
+		}
+
+		.quick-contact p {
+			min-height: 5rem;
+			border-top: var(--border);
+		}
+
+		.quick-contact p + p {
+			border-left: 0;
+		}
+
+		.quick-contact p:first-child {
+			border-top: 0;
+		}
+
+		.quick-contact p:last-child {
+			grid-column: auto;
+		}
+
+		.intro-section__copy {
+			padding-top: 0;
+		}
+
+		.services-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.service-card,
+		.service-card:nth-child(4),
+		.service-card:nth-child(5),
+		.service-card:last-child {
+			grid-column: auto;
+			min-height: 18rem;
+		}
+
+		.journey-list li {
+			grid-template-columns: 3.25rem minmax(0, 1fr);
+			gap: 1rem;
+		}
+
+		.journey-list div {
+			grid-template-columns: 1fr;
+			gap: 0.75rem;
+		}
+	}
+
+	@media (max-width: 25rem) {
+		.quick-contact p {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 0.2rem;
+		}
+
+		.quick-contact span {
+			margin-right: 0;
+		}
+	}
+</style>

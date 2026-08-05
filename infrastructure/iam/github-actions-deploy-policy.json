@@ -1,0 +1,26 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ListNoemiWebsiteBucket",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::website-noemi-grigoletto"
+    },
+    {
+      "Sid": "DeployNoemiWebsiteObjects",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::website-noemi-grigoletto/*"
+    },
+    {
+      "Sid": "InvalidateNoemiWebsiteDistribution",
+      "Effect": "Allow",
+      "Action": "cloudfront:CreateInvalidation",
+      "Resource": "arn:aws:cloudfront::128780714139:distribution/E2OQXDU8OVQJMQ"
+    }
+  ]
+}

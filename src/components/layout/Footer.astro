@@ -1,0 +1,32 @@
+---
+import Brand from '../common/Brand.astro';
+import { navigation } from '../../data/navigation';
+import { site } from '../../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="page-shell site-footer__grid">
+		<div class="site-footer__brand">
+			<Brand />
+			<p>Un percorso nutrizionale costruito con ascolto, consapevolezza e rispetto della persona.</p>
+		</div>
+		<nav aria-label="Navigazione nel piè di pagina">
+			<p class="footer-label">Esplora</p>
+			<ul>{navigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul>
+		</nav>
+		<div>
+			<p class="footer-label">Contatti</p>
+			<a href={`mailto:${site.email}`}>{site.email}</a>
+			<a href={site.phoneHref}>{site.phoneDisplay}</a>
+			<div class="site-footer__socials">
+				{site.socials.map((social) => <a href={social.href} target="_blank" rel="noreferrer">{social.label}</a>)}
+			</div>
+		</div>
+	</div>
+	<div class="page-shell site-footer__bottom">
+		<p>© {year} Noemi Grigoletto</p>
+		<p>Sito informativo professionale</p>
+	</div>
+</footer>

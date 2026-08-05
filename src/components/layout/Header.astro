@@ -1,0 +1,48 @@
+---
+import Brand from '../common/Brand.astro';
+import ButtonLink from '../ui/ButtonLink.astro';
+import { navigation } from '../../data/navigation';
+import { site } from '../../data/site';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => href === currentPath;
+---
+
+<header class="site-header">
+	<div class="site-header__inner page-shell">
+		<Brand />
+
+		<nav class="desktop-nav" aria-label="Navigazione principale">
+			<ul>
+				{navigation.map((item) => (
+					<li>
+						<a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+
+		<div class="desktop-cta">
+			<ButtonLink href={site.bookingUrl} external>Prenota una prima visita</ButtonLink>
+		</div>
+
+		<details class="mobile-nav">
+			<summary>
+				<span>Menu</span>
+				<svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24">
+					<path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
+				</svg>
+			</summary>
+			<div class="mobile-nav__panel">
+				<nav aria-label="Navigazione mobile">
+					<ul>
+						{navigation.map((item) => (
+							<li><a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a></li>
+						))}
+					</ul>
+				</nav>
+				<ButtonLink href={site.bookingUrl} external>Prenota una prima visita</ButtonLink>
+			</div>
+		</details>
+	</div>
+</header>
