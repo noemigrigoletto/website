@@ -1,7 +1,168 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PagePlaceholder from '../components/sections/PagePlaceholder.astro';
+import ButtonLink from '../components/ui/ButtonLink.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import ContactBand from '../components/sections/ContactBand.astro';
+import { journeySteps, serviceAreas } from '../data/services';
+import { site } from '../data/site';
 ---
-<BaseLayout title="Consulenze nutrizionali | Noemi Grigoletto" description="Come funziona il percorso nutrizionale: prima visita, piano personalizzato, controlli e supporto." noindex>
-	<PagePlaceholder eyebrow="Consulenze" title="Un percorso chiaro, dall’ascolto al monitoraggio." description="La pagina spiegherà la prima visita, cosa portare, la preparazione del piano personalizzato, il supporto e le visite di controllo." />
+
+<BaseLayout title="Consulenze nutrizionali | Noemi Grigoletto" description="Prima visita, piano nutrizionale personalizzato, visite di controllo e supporto tra gli incontri." noindex>
+	<header class="page-shell consultation-heading">
+		<h1>Consulenze nutrizionali</h1>
+	</header>
+
+	<section class="journey-section" id="percorso-nutrizionale">
+		<div class="page-shell">
+			<SectionHeading
+				title="Il percorso nutrizionale"
+			/>
+			<ol class="journey-list">
+				{journeySteps.map((step, index) => (
+					<li>
+						<span aria-hidden="true">{index + 1}</span>
+						<div><h3>{step.title}</h3><p>{step.description}</p></div>
+					</li>
+				))}
+			</ol>
+			<div class="preparation">
+				<h3>Cosa portare alla prima visita</h3>
+				<ul>
+					<li>In caso di patologie diagnosticate, porta la prescrizione per la visita dietistica, firmata e timbrata dal medico curante. Puoi usare il facsimile qui sotto.</li>
+					<li>Se li hai, puoi portare gli esiti degli esami del sangue effettuati nell’ultimo anno.</li>
+					<li>Puoi compilare il diario alimentare per 3–5 giorni prima della visita. È facoltativo.</li>
+				</ul>
+				<div class="preparation__links">{site.resources.map((resource) => <ButtonLink href={resource.href} variant="secondary" external>{resource.label}</ButtonLink>)}</div>
+			</div>
+			<ButtonLink href={site.bookingUrl} external>Prenota una prima visita</ButtonLink>
+		</div>
+	</section>
+
+	<section class="page-shell consultation-areas" aria-labelledby="areas-title">
+		<h2 id="areas-title">A chi si rivolgono le consulenze</h2>
+		<div class="consultation-areas__grid">
+			{serviceAreas.map(({ title, description }) => (
+				<article>
+					<h3>{title}</h3>
+					<p>{description}</p>
+				</article>
+			))}
+		</div>
+	</section>
+	<ContactBand />
 </BaseLayout>
+
+<style>
+	.consultation-heading {
+		padding-top: clamp(3rem, 7vw, 6rem);
+	}
+
+	.consultation-heading h1 {
+		margin-bottom: 0;
+	}
+
+	.journey-section {
+		padding-block: clamp(2.5rem, 6vw, 5rem);
+	}
+
+	.preparation {
+		margin: 2rem 0;
+		padding: clamp(1.5rem, 4vw, 2.5rem);
+		border: var(--border);
+		border-radius: var(--radius-lg);
+		background: var(--color-paper);
+	}
+
+	.preparation ul {
+		padding-inline-start: 1.25rem;
+		list-style: disc;
+	}
+
+	.preparation__links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 1.5rem;
+	}
+
+	.consultation-areas {
+		padding-bottom: var(--section-space);
+	}
+
+	.consultation-areas__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+		gap: 1rem;
+	}
+
+	.consultation-areas article {
+		padding: 1.5rem;
+		border: var(--border);
+		border-radius: var(--radius-md);
+		background: var(--color-paper);
+	}
+
+	.consultation-areas article p {
+		margin: 0;
+	}
+
+	.journey-list {
+		margin: 0 0 2rem;
+		padding: 0;
+		list-style: none;
+	}
+
+	.journey-list li {
+		display: grid;
+		grid-template-columns: 5rem minmax(0, 1fr);
+		gap: clamp(1.5rem, 4vw, 4rem);
+		border-top: var(--border);
+		padding-block: 2rem;
+	}
+
+	.journey-list li:last-child {
+		border-bottom: var(--border);
+	}
+
+	.journey-list li > span {
+		display: grid;
+		width: 3.1rem;
+		height: 3.1rem;
+		place-items: center;
+		border: 1px solid var(--color-terracotta);
+		border-radius: 50%;
+		color: var(--color-terracotta);
+		font-family: var(--font-display);
+		font-size: 1.35rem;
+	}
+
+	.journey-list div {
+		display: grid;
+		grid-template-columns: minmax(12rem, 0.6fr) minmax(18rem, 1fr);
+		gap: 2rem;
+		align-items: baseline;
+	}
+
+	.journey-list h3,
+	.journey-list p {
+		margin: 0;
+	}
+
+	.journey-list p {
+		max-width: 38rem;
+		color: var(--color-cocoa-soft);
+	}
+
+	@media (max-width: 56rem) {
+		.journey-list li {
+			grid-template-columns: 3.25rem minmax(0, 1fr);
+			gap: 1rem;
+		}
+
+		.journey-list div {
+			grid-template-columns: 1fr;
+			gap: 0.75rem;
+		}
+
+	}
+</style>

@@ -18,8 +18,10 @@ export const site = {
 	phoneHref: 'tel:+393492418586',
 	bookingUrl: 'https://form.jotform.com/240092101421033',
 	portrait: {
-		src: '/images/noemi-grigoletto.png',
+		src: '/images/noemi-grigoletto-portrait.webp',
 		alt: 'Noemi Grigoletto, dietista',
+		width: 1200,
+		height: 1600,
 	},
 	mark: {
 		src: '/images/noemi-mark.png',

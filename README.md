@@ -1,46 +1,29 @@
-# Astro Starter Kit: Basics
+# Noemi Grigoletto — website
+
+Static Italian website for Noemi Grigoletto, dietitian, built with Astro and Tailwind CSS.
+
+## Local development
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npx astro dev --background
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The server normally runs at `http://localhost:4321`. Manage it with:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npx astro dev status
+npx astro dev logs
+npx astro dev stop
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Validation
 
-## 🧞 Commands
+```sh
+npm run check
+npm run build
+```
 
-All commands are run from the root of the project, from a terminal:
+## Documentation
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Start with [`doc/README.md`](doc/README.md) for the architecture, decisions, current state, dependency baseline, and workflow.

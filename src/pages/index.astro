@@ -1,9 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource/lora/400-italic.css';
 import ButtonLink from '../components/ui/ButtonLink.astro';
 import SectionHeading from '../components/ui/SectionHeading.astro';
 import ContactBand from '../components/sections/ContactBand.astro';
-import { journeySteps, serviceAreas } from '../data/services';
+import Icon from '../components/ui/Icon.astro';
+import { reviewPlaceholders } from '../data/reviews';
+import { foodEducation } from '../data/services';
 import { site } from '../data/site';
 ---
 
@@ -12,12 +18,10 @@ import { site } from '../data/site';
 	description="Percorsi nutrizionali personalizzati per costruire un rapporto consapevole, equilibrato e sereno con l’alimentazione. Consulenze online e in ambulatorio."
 >
 	<section class="hero" aria-labelledby="hero-title">
-		<div class="hero__leaf hero__leaf--one" aria-hidden="true"></div>
-		<div class="hero__leaf hero__leaf--two" aria-hidden="true"></div>
 		<div class="page-shell hero__grid">
 			<div class="hero__content">
 				<p class="eyebrow">Dietista · Consulenze online e in ambulatorio</p>
-				<h1 id="hero-title">Il cibo può tornare a essere un <em>alleato.</em></h1>
+				<h1 id="hero-title">il cibo è <em>il tuo alleato</em></h1>
 				<p class="hero__lead">Un percorso nutrizionale fatto di ascolto e consapevolezza, lontano da diete rigide e rinunce.</p>
 				<div class="hero__actions">
 					<ButtonLink href={site.bookingUrl} external>Prenota una prima visita</ButtonLink>
@@ -26,19 +30,17 @@ import { site } from '../data/site';
 			</div>
 
 			<div class="hero__portrait">
-				<div class="hero__portrait-shape" aria-hidden="true"></div>
-				<div class="hero__portrait-ring" aria-hidden="true"></div>
-				<img src={site.portrait.src} alt={site.portrait.alt} width="1280" height="1351" fetchpriority="high" />
-				<p class="hero__signature" aria-hidden="true">Noemi</p>
+				<img src="/images/noemi-grigoletto.png" alt={site.portrait.alt} width="1280" height="1351" fetchpriority="high" />
 			</div>
 		</div>
 	</section>
 
 	<aside class="quick-contact" aria-label="Contatti rapidi">
 		<div class="page-shell quick-contact__inner">
-			<p><span>Scrivimi</span><a href={`mailto:${site.email}`}>{site.email}</a></p>
-			<p><span>Chiamami</span><a href={site.phoneHref}>{site.phoneDisplay}</a></p>
-			<p><span>Seguimi</span>{site.socials.map((social, index) => <><a href={social.href} target="_blank" rel="noreferrer">{social.label}</a>{index === 0 && <i aria-hidden="true">·</i>}</>)}</p>
+			<a href={`mailto:${site.email}`} aria-label={`Scrivi a ${site.email}`} title="Scrivimi via email"><Icon name="mail" size={27} /><span class="sr-only">Scrivimi via email</span></a>
+			<a href={site.phoneHref} aria-label={`Chiama ${site.phoneDisplay}`} title="Chiamami"><Icon name="phone" size={27} /><span class="sr-only">Chiamami</span></a>
+			<a href={site.socials[0].href} target="_blank" rel="noreferrer" aria-label="Seguimi su Instagram" title="Instagram"><Icon name="instagram" size={27} /><span class="sr-only">Instagram</span></a>
+			<a href={site.socials[1].href} target="_blank" rel="noreferrer" aria-label="Seguimi su Facebook" title="Facebook"><Icon name="facebook" size={27} /><span class="sr-only">Facebook</span></a>
 		</div>
 	</aside>
 
@@ -56,67 +58,62 @@ import { site } from '../data/site';
 		</div>
 	</section>
 
-	<section class="philosophy-section" aria-labelledby="philosophy-title">
-		<div class="philosophy-section__scribble" aria-hidden="true">
-			<svg viewBox="0 0 220 170"><path d="M20 122C39 29 181 11 194 77c11 56-90 86-146 55C3 107 23 58 72 35" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>
-		</div>
-		<div class="page-shell philosophy-section__inner">
-			<p class="eyebrow">Il mio approccio</p>
-			<h2 id="philosophy-title">Non una dieta da seguire.<br /><em>Un equilibrio da costruire.</em></h2>
-			<div class="philosophy-section__copy">
-				<p>Credo nel potere dell’educazione alimentare: capire ciò che ci nutre permette di fare scelte più libere e di trasformare la sana alimentazione in un’abitudine spontanea.</p>
-				<p>Il percorso parte dai tuoi bisogni, dalla tua quotidianità e dagli obiettivi che definiamo insieme. Senza scorciatoie, ma con strumenti concreti da portare nella vita di ogni giorno.</p>
+	<section class="training-section" aria-labelledby="training-title">
+		<div class="page-shell training-section__inner">
+			<div>
+				<h2 id="training-title">La mia formazione</h2>
+			</div>
+			<div class="training-section__facts">
+				<article><h3>Laurea e master</h3><p>Laurea triennale in Dietistica conseguita con lode all’Università di Padova e formazione post-laurea con un master.</p></article>
+				<article><h3>Oltre 1.000</h3><p>pazienti seguiti nel mio percorso professionale.</p></article>
 			</div>
 		</div>
 	</section>
 
-	<section class="services-section">
+	<section class="philosophy-section" aria-labelledby="philosophy-title">
+		<div class="page-shell philosophy-section__inner">
+			<p class="eyebrow">La mia missione</p>
+			<h2 id="philosophy-title">Rendere la sana alimentazione un’abitudine spontanea e consapevole.</h2>
+			<p class="philosophy-section__lead">Credo nel potere dell’educazione alimentare: ci aiuta a prenderci cura della salute, a vivere con maggiore equilibrio e ad appagare i nostri sensi, senza trasformare il cibo in un insieme di regole e rinunce.</p>
+			<blockquote>“Insieme faremo un percorso che ti porterà a raggiungere il tuo obiettivo e a mantenerlo attraverso la creazione di sane abitudini che diventeranno il tuo stile di vita.”</blockquote>
+			<p class="philosophy-section__closing">Io sono qui per accompagnarti.</p>
+		</div>
+	</section>
+
+	<section class="services-section" aria-labelledby="services-title">
+		<div class="page-shell">
+			<h2 id="services-title">Di cosa mi occupo</h2>
+			<div class="services-grid">
+				<a class="service-card" href="/di-cosa-mi-occupo">
+					<Icon name={foodEducation.icon} size={42} />
+					<h3>{foodEducation.title}</h3>
+					<span aria-hidden="true">→</span>
+				</a>
+				<a class="service-card" href="/consulenze">
+					<Icon name="clinical" size={42} />
+					<h3>Consulenze nutrizionali</h3>
+					<span aria-hidden="true">→</span>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="reviews-section" aria-labelledby="reviews-title">
 		<div class="page-shell">
 			<SectionHeading
-				eyebrow="Di cosa mi occupo"
-				title="Esigenze diverse, un percorso costruito con cura."
-				description="Dall’educazione alimentare alle necessità cliniche o legate alle diverse fasi della vita: ogni intervento nasce dalla tua situazione specifica."
+				eyebrow="Parole sul percorso"
+				title="Ascolto, chiarezza e piccoli cambiamenti quotidiani."
+				description="Questa sezione è una proposta grafica. I testi seguenti sono esempi fittizi e dovranno essere sostituiti con recensioni autentiche e approvate prima della pubblicazione."
 			/>
-			<div class="services-grid">
-				{serviceAreas.map((service) => (
-					<article class:list={['service-card', `service-card--${service.accent}`]}>
-						<span class="service-card__number">{service.number}</span>
-						<h3>{service.title}</h3>
-						<p>{service.description}</p>
+			<div class="reviews-grid">
+				{reviewPlaceholders.map((review) => (
+					<article class="review-card">
+						<p class="review-card__label">Recensione dimostrativa</p>
+						<blockquote>“{review.quote}”</blockquote>
+						<p class="review-card__name">{review.name}</p>
 					</article>
 				))}
 			</div>
-			<div class="services-section__link">
-				<ButtonLink href="/di-cosa-mi-occupo" variant="secondary">Scopri di cosa mi occupo</ButtonLink>
-			</div>
-		</div>
-	</section>
-
-	<section class="journey-section">
-		<div class="page-shell">
-			<SectionHeading
-				eyebrow="Il percorso nutrizionale"
-				title="Un passo alla volta, con una direzione condivisa."
-				description="La consulenza non si esaurisce in un piano alimentare: è un percorso di conoscenza, verifica e adattamento."
-			/>
-			<ol class="journey-list">
-				{journeySteps.map((step) => (
-					<li>
-						<span>{step.number}</span>
-						<div><h3>{step.title}</h3><p>{step.description}</p></div>
-					</li>
-				))}
-			</ol>
-			<ButtonLink href="/consulenze" variant="text">Scopri come funziona la consulenza</ButtonLink>
-		</div>
-	</section>
-
-	<section class="mission-section" aria-labelledby="mission-title">
-		<div class="mission-section__shape" aria-hidden="true"></div>
-		<div class="page-shell mission-section__inner">
-			<p class="eyebrow">La mia missione</p>
-			<blockquote id="mission-title">“Aiutarti a rendere l’alimentazione un gesto di cura, consapevole ma naturale.”</blockquote>
-			<p>Non conta la velocità con cui si raggiunge un obiettivo. Conta costruire abitudini che possano davvero accompagnarti nel tempo.</p>
 		</div>
 	</section>
 
@@ -124,10 +121,63 @@ import { site } from '../data/site';
 </BaseLayout>
 
 <style>
+	:global(main:has(.hero)) {
+		--font-sans: "Poppins", sans-serif;
+		--font-display: "Lora", Georgia, serif;
+		--font-serif: "Lora", Georgia, serif;
+		--color-cocoa: #52463e;
+		--color-cocoa-soft: #65584f;
+		--color-ivory: #f8f3ef;
+		--color-paper: #fffdfb;
+		--color-caramel: #a38b7a;
+		--color-sand: #eee3db;
+		--color-blush: #e4d5ca;
+		--color-blush-light: #f5ede7;
+		--color-terracotta: #895b42;
+		--color-honey: #c9b4a5;
+		--border: 1px solid #e4d7cf;
+		background: var(--color-ivory);
+		color: var(--color-cocoa);
+		font-family: var(--font-sans);
+	}
+
+	:global(main:has(.hero) h1),
+	:global(main:has(.hero) h2),
+	:global(main:has(.hero) h3) {
+		font-family: var(--font-sans);
+		font-weight: 750;
+		letter-spacing: -0.04em;
+	}
+
+	:global(main:has(.hero) .eyebrow) {
+		font-family: var(--font-sans);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+	}
+
+	:global(main:has(.hero) .button-link--primary) {
+		background: linear-gradient(135deg, #835039, #a16d50);
+		box-shadow: 0 0.8rem 1.8rem rgb(82 70 62 / 0.18);
+	}
+
 	.hero {
 		position: relative;
 		overflow: hidden;
-		background: var(--color-peach-light);
+		background:
+			radial-gradient(circle at 75% 22%, #fffdfb 0, transparent 38%),
+			radial-gradient(circle at 15% 85%, #e9dad0 0, transparent 40%),
+			linear-gradient(135deg, #f8f3ef, #eee2da);
+	}
+
+	.hero::after {
+		position: absolute;
+		top: 12%;
+		right: 8%;
+		color: #a16d50;
+		content: '✦';
+		font-size: 2rem;
 	}
 
 	.hero__grid {
@@ -148,18 +198,22 @@ import { site } from '../data/site';
 	.hero h1 {
 		max-width: 48rem;
 		margin-bottom: 1.75rem;
+		font-weight: 750;
+		letter-spacing: -0.012em;
 	}
 
 	.hero h1 em,
 	.philosophy-section em {
 		color: var(--color-terracotta);
-		font-weight: 500;
+		font-family: var(--font-display);
+		font-weight: 400;
+		letter-spacing: -0.02em;
 	}
 
 	.hero__lead {
 		max-width: 38rem;
 		margin-bottom: 2rem;
-		color: var(--color-ink-soft);
+		color: var(--color-cocoa-soft);
 		font-size: clamp(1.15rem, 1.8vw, 1.38rem);
 		line-height: 1.55;
 	}
@@ -170,77 +224,23 @@ import { site } from '../data/site';
 		gap: 0.75rem;
 	}
 
+	:global(.hero__actions .button-link) {
+		min-height: 4.75rem;
+		padding-inline: clamp(1rem, 2.5vw, 2.25rem);
+		font-size: 1.125rem;
+	}
+
 	.hero__portrait {
 		position: relative;
-		align-self: end;
+		align-self: center;
 		justify-self: center;
-		width: min(100%, 34rem);
+		width: min(100%, 30rem);
+		margin-block: 3rem 0;
 	}
 
 	.hero__portrait img {
-		position: relative;
-		z-index: 2;
 		width: 100%;
 		height: auto;
-		filter: drop-shadow(0 1.5rem 2rem rgb(39 52 45 / 0.12));
-	}
-
-	.hero__portrait-shape {
-		position: absolute;
-		z-index: 0;
-		right: -8%;
-		bottom: 0;
-		width: 108%;
-		height: 84%;
-		border-radius: 48% 52% 0 0 / 35% 38% 0 0;
-		background: var(--color-sage);
-	}
-
-	.hero__portrait-ring {
-		position: absolute;
-		z-index: 1;
-		top: 7%;
-		left: -12%;
-		width: 13rem;
-		height: 13rem;
-		border: 1px solid var(--color-forest);
-		border-radius: 46% 54% 60% 40% / 51% 38% 62% 49%;
-		transform: rotate(-18deg);
-	}
-
-	.hero__signature {
-		position: absolute;
-		z-index: 3;
-		right: -1rem;
-		bottom: 2rem;
-		margin: 0;
-		color: var(--color-paper);
-		font-family: var(--font-display);
-		font-size: 2.3rem;
-		font-style: italic;
-		transform: rotate(-7deg);
-	}
-
-	.hero__leaf {
-		position: absolute;
-		border: 1px solid rgb(39 52 45 / 0.22);
-		border-radius: 100% 0 100% 0;
-	}
-
-	.hero__leaf--one {
-		top: 8%;
-		right: -3rem;
-		width: 10rem;
-		height: 15rem;
-		transform: rotate(28deg);
-	}
-
-	.hero__leaf--two {
-		bottom: 6%;
-		left: -5rem;
-		width: 9rem;
-		height: 13rem;
-		transform: rotate(-40deg);
 	}
 
 	.quick-contact {
@@ -249,44 +249,30 @@ import { site } from '../data/site';
 	}
 
 	.quick-contact__inner {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-	}
-
-	.quick-contact p {
 		display: flex;
 		min-height: 6.25rem;
 		align-items: center;
-		gap: 0.55rem;
-		margin: 0;
-		padding: 1.2rem clamp(1rem, 3vw, 2.5rem);
-		font-size: 0.95rem;
-	}
-
-	.quick-contact p + p {
-		border-left: var(--border);
-	}
-
-	.quick-contact span {
-		margin-right: auto;
-		color: var(--color-forest);
-		font-size: 0.68rem;
-		font-weight: 700;
-		letter-spacing: 0.13em;
-		text-transform: uppercase;
+		justify-content: center;
+		gap: clamp(0.65rem, 2vw, 1.25rem);
 	}
 
 	.quick-contact a {
-		font-weight: 600;
+		display: inline-flex;
+		width: 3.25rem;
+		height: 3.25rem;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid color-mix(in srgb, var(--color-terracotta) 42%, transparent);
+		border-radius: 50%;
+		color: var(--color-terracotta);
 		text-decoration: none;
+		transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
 	}
 
 	.quick-contact a:hover {
-		text-decoration: underline;
-	}
-
-	.quick-contact i {
-		font-style: normal;
+		background: var(--color-terracotta);
+		color: white;
+		transform: translateY(-2px);
 	}
 
 	.intro-section {
@@ -309,208 +295,175 @@ import { site } from '../data/site';
 	}
 
 	.intro-section__copy p {
-		color: var(--color-ink-soft);
+		color: var(--color-cocoa-soft);
 	}
 
 	.intro-section__copy .intro-section__lead {
-		color: var(--color-ink);
+		color: var(--color-cocoa);
 		font-size: 1.2rem;
 	}
 
 	.philosophy-section {
-		position: relative;
-		overflow: hidden;
-		background: var(--color-sage);
+		background: linear-gradient(135deg, #f5ede7, #e7d8ce);
 	}
 
 	.philosophy-section__inner {
+		max-width: 69rem;
 		padding-block: var(--section-space);
+		text-align: center;
 	}
 
 	.philosophy-section h2 {
-		max-width: 59rem;
-		margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+		max-width: 64rem;
+		margin: 0 auto 2rem;
 	}
 
-	.philosophy-section__copy {
-		display: grid;
-		max-width: 60rem;
-		grid-template-columns: 1fr 1fr;
-		gap: clamp(2rem, 5vw, 5rem);
-		margin-left: auto;
+	.philosophy-section__lead {
+		max-width: 48rem;
+		margin: 0 auto clamp(3rem, 6vw, 5rem);
+		color: var(--color-cocoa-soft);
+		font-size: clamp(1.08rem, 1.6vw, 1.28rem);
 	}
 
-	.philosophy-section__copy p {
+	.philosophy-section blockquote {
+		max-width: 61rem;
+		margin: 0 auto 2rem;
+		font-family: var(--font-display);
+		font-size: clamp(2rem, 4.3vw, 4.25rem);
+		font-weight: 400;
+		letter-spacing: -0.015em;
+		line-height: 1.13;
+	}
+
+	.philosophy-section__closing {
 		margin: 0;
-		font-size: 1.08rem;
+		color: var(--color-terracotta);
+		font-size: 1.05rem;
+		font-weight: 750;
 	}
 
-	.philosophy-section__scribble {
-		position: absolute;
-		right: -1rem;
-		bottom: 0;
-		width: min(18rem, 30vw);
-		color: rgb(39 52 45 / 0.35);
-		transform: rotate(-12deg);
+	.training-section {
+		padding-block: clamp(3rem, 6vw, 5rem);
+		background: linear-gradient(135deg, var(--color-sand), var(--color-blush));
 	}
 
-	.services-section {
+	.training-section__inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		gap: clamp(1.5rem, 5vw, 5rem);
+	}
+
+	.training-section__facts {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.training-section__facts article {
+		border: var(--border);
+		border-radius: 2rem;
 		background: var(--color-paper);
+		padding: clamp(1.5rem, 3vw, 2.25rem);
+	}
+
+	.training-section h2 { margin-bottom: 0; }
+	.training-section__facts h3 { margin-bottom: .75rem; }
+	.training-section__facts p { margin-bottom: 0; color: var(--color-cocoa-soft); }
+	.services-section {
+		background: var(--color-ivory);
 		padding-block: var(--section-space);
 	}
 
 	.services-grid {
 		display: grid;
-		grid-template-columns: repeat(6, 1fr);
-		border-top: var(--border);
-		border-left: var(--border);
+		grid-template-columns: repeat(2, minmax(0, 22rem));
+		gap: clamp(0.75rem, 3vw, 2rem);
 	}
 
 	.service-card {
-		position: relative;
-		grid-column: span 2;
-		min-height: 20rem;
-		border-right: var(--border);
-		border-bottom: var(--border);
-		padding: clamp(1.5rem, 3vw, 2.25rem);
+		display: flex;
+		aspect-ratio: 1;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: clamp(0.35rem, 2vw, 1.25rem);
+		padding: clamp(0.5rem, 2vw, 1.5rem);
+		border: var(--border);
+		border-radius: clamp(1rem, 3vw, 2rem);
+		background: var(--color-paper);
+		color: var(--color-cocoa);
+		text-align: center;
+		text-decoration: none;
 	}
 
-	.service-card:nth-child(4),
-	.service-card:nth-child(5) {
-		grid-column: span 3;
+	.service-card:nth-child(2) {
+		background: var(--color-blush-light);
 	}
 
-	.service-card::before {
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: 5.5rem;
-		height: 5.5rem;
-		border-radius: 0 0 0 100%;
-		content: '';
-	}
-
-	.service-card--sage::before { background: var(--color-sage); }
-	.service-card--peach::before { background: var(--color-peach); }
-	.service-card--butter::before { background: var(--color-butter); }
-	.service-card--rose::before { background: var(--color-rose); }
-	.service-card--mint::before { background: var(--color-sage-light); }
-
-	.service-card__number {
-		display: inline-block;
-		margin-bottom: 5rem;
-		color: var(--color-forest);
-		font-size: 0.74rem;
-		font-weight: 700;
-		letter-spacing: 0.15em;
+	.service-card:hover {
+		border-color: var(--color-terracotta);
+		box-shadow: 0 0.75rem 2rem rgb(82 70 62 / 0.12);
 	}
 
 	.service-card h3 {
-		max-width: 16rem;
-		margin-bottom: 1rem;
-	}
-
-	.service-card p {
-		max-width: 23rem;
-		margin-bottom: 0;
-		color: var(--color-ink-soft);
-	}
-
-	.services-section__link {
-		display: flex;
-		justify-content: flex-end;
-		margin-top: 2rem;
-	}
-
-	.journey-section {
-		padding-block: var(--section-space);
-	}
-
-	.journey-list {
-		margin: 0 0 2rem;
-		padding: 0;
-		list-style: none;
-	}
-
-	.journey-list li {
-		display: grid;
-		grid-template-columns: 5rem minmax(0, 1fr);
-		gap: clamp(1.5rem, 4vw, 4rem);
-		border-top: var(--border);
-		padding-block: 2rem;
-	}
-
-	.journey-list li:last-child {
-		border-bottom: var(--border);
-	}
-
-	.journey-list li > span {
-		display: grid;
-		width: 3.1rem;
-		height: 3.1rem;
-		place-items: center;
-		border: 1px solid var(--color-forest);
-		border-radius: 50%;
-		color: var(--color-forest);
-		font-family: var(--font-display);
-		font-size: 1.35rem;
-	}
-
-	.journey-list div {
-		display: grid;
-		grid-template-columns: minmax(12rem, 0.6fr) minmax(18rem, 1fr);
-		gap: 2rem;
-		align-items: baseline;
-	}
-
-	.journey-list h3,
-	.journey-list p {
 		margin: 0;
+		font-size: clamp(0.95rem, 2.5vw, 1.75rem);
 	}
 
-	.journey-list p {
-		max-width: 38rem;
-		color: var(--color-ink-soft);
+	.service-card svg,
+	.service-card span {
+		color: var(--color-terracotta);
 	}
 
-	.mission-section {
-		position: relative;
-		overflow: hidden;
-		background: var(--color-butter);
+	.service-card svg {
+		width: clamp(1.5rem, 5vw, 2.625rem);
+		height: auto;
 	}
 
-	.mission-section__inner {
-		position: relative;
-		z-index: 1;
+	.reviews-section {
+		background: linear-gradient(145deg, #f2e8e1, #e5d4c9);
 		padding-block: var(--section-space);
-		text-align: center;
 	}
 
-	.mission-section blockquote {
-		max-width: 59rem;
-		margin: 0 auto 2rem;
+	.reviews-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+	}
+
+	.review-card {
+		display: flex;
+		min-height: 22rem;
+		flex-direction: column;
+		border: var(--border);
+		border-radius: 2rem;
+		background: var(--color-paper);
+		box-shadow: 0 1.25rem 3rem rgb(93 55 38 / 0.06);
+		padding: clamp(1.5rem, 3vw, 2.25rem);
+	}
+
+	.review-card__label {
+		margin-bottom: 2.5rem;
+		color: var(--color-terracotta);
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+	}
+
+	.review-card blockquote {
+		margin: 0 0 2rem;
 		font-family: var(--font-display);
-		font-size: clamp(2.5rem, 5vw, 5rem);
-		font-weight: 500;
-		letter-spacing: -0.035em;
-		line-height: 1.08;
+		font-style: italic;
+		font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+		font-weight: 400;
+		line-height: 1.3;
 	}
 
-	.mission-section p:last-child {
-		max-width: 40rem;
-		margin: 0 auto;
-		font-size: 1.08rem;
-	}
-
-	.mission-section__shape {
-		position: absolute;
-		top: 12%;
-		left: -5rem;
-		width: 20rem;
-		height: 26rem;
-		border: 1px solid rgb(39 52 45 / 0.25);
-		border-radius: 100% 0 100% 0;
-		transform: rotate(30deg);
+	.review-card__name {
+		margin: auto 0 0;
+		color: var(--color-cocoa-soft);
+		font-size: 0.88rem;
+		font-weight: 700;
 	}
 
 	@media (max-width: 64rem) {
@@ -519,28 +472,13 @@ import { site } from '../data/site';
 			grid-template-columns: 1fr 0.8fr;
 		}
 
-		.hero__signature {
-			display: none;
-		}
-
-		.quick-contact__inner {
+		.reviews-grid {
 			grid-template-columns: 1fr 1fr;
 		}
 
-		.quick-contact p:last-child {
+		.review-card:last-child {
 			grid-column: 1 / -1;
-			border-top: var(--border);
-			border-left: 0;
-		}
-
-		.service-card,
-		.service-card:nth-child(4),
-		.service-card:nth-child(5) {
-			grid-column: span 3;
-		}
-
-		.service-card:last-child {
-			grid-column: span 6;
+			min-height: 18rem;
 		}
 	}
 
@@ -562,65 +500,27 @@ import { site } from '../data/site';
 			display: grid;
 		}
 
-		.quick-contact__inner,
 		.intro-section__grid,
-		.philosophy-section__copy {
+		.training-section__inner {
 			grid-template-columns: 1fr;
 		}
 
-		.quick-contact p {
+		.quick-contact__inner {
 			min-height: 5rem;
-			border-top: var(--border);
-		}
-
-		.quick-contact p + p {
-			border-left: 0;
-		}
-
-		.quick-contact p:first-child {
-			border-top: 0;
-		}
-
-		.quick-contact p:last-child {
-			grid-column: auto;
 		}
 
 		.intro-section__copy {
 			padding-top: 0;
 		}
 
-		.services-grid {
+		.reviews-grid {
 			grid-template-columns: 1fr;
 		}
 
-		.service-card,
-		.service-card:nth-child(4),
-		.service-card:nth-child(5),
-		.service-card:last-child {
+		.review-card,
+		.review-card:last-child {
 			grid-column: auto;
-			min-height: 18rem;
-		}
-
-		.journey-list li {
-			grid-template-columns: 3.25rem minmax(0, 1fr);
-			gap: 1rem;
-		}
-
-		.journey-list div {
-			grid-template-columns: 1fr;
-			gap: 0.75rem;
-		}
-	}
-
-	@media (max-width: 25rem) {
-		.quick-contact p {
-			align-items: flex-start;
-			flex-direction: column;
-			gap: 0.2rem;
-		}
-
-		.quick-contact span {
-			margin-right: 0;
+			min-height: 19rem;
 		}
 	}
 </style>

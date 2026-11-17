@@ -1,62 +1,63 @@
+import type { IconName } from '../components/ui/Icon.astro';
+
 export interface ServiceArea {
-	number: string;
 	title: string;
 	description: string;
-	accent: 'sage' | 'peach' | 'butter' | 'rose' | 'mint';
+	icon: IconName;
 }
+
+export const foodEducation = {
+	title: 'Educazione alimentare',
+	description: 'Percorsi individuali, laboratori e formazione aziendale per approfondire il rapporto con il cibo e le abitudini alimentari.',
+	icon: 'education',
+} as const satisfies ServiceArea;
 
 export const serviceAreas = [
 	{
-		number: '01',
-		title: 'Educazione alimentare',
-		description: 'Per ritrovare ascolto, consapevolezza e un rapporto più sereno con il cibo e con il corpo.',
-		accent: 'sage',
-	},
-	{
-		number: '02',
 		title: 'Fasi della vita',
 		description: 'Alimentazione in crescita, gravidanza, allattamento e menopausa, nel rispetto delle esigenze individuali.',
-		accent: 'peach',
+		icon: 'life',
 	},
 	{
-		number: '03',
 		title: 'Nutrizione e movimento',
 		description: 'Indicazioni alimentari per l’attività fisica e lo sport, integrate nella quotidianità.',
-		accent: 'butter',
+		icon: 'movement',
 	},
 	{
-		number: '04',
 		title: 'Condizioni patologiche',
 		description: 'Percorsi dietistici in presenza di patologie diagnosticate, in collaborazione con il medico curante.',
-		accent: 'rose',
+		icon: 'clinical',
 	},
 	{
-		number: '05',
 		title: 'Esigenze speciali',
 		description: 'Alimentazione vegetariana o vegana, celiachia, allergie, intolleranze e altre necessità specifiche.',
-		accent: 'mint',
+		icon: 'special',
 	},
 ] as const satisfies readonly ServiceArea[];
 
 export const journeySteps = [
 	{
-		number: '1',
-		title: 'Ci conosciamo',
-		description: 'La prima visita parte dalla tua storia, dalle abitudini e dalle necessità che porti con te.',
+		title: 'Prima visita · 1 ora',
+		description: 'Ripercorriamo la tua storia clinica e alimentare, comprese eventuali patologie segnalate dal medico. Rivediamo la storia del peso e rileviamo peso, altezza, indice di massa corporea e circonferenze.',
 	},
 	{
-		number: '2',
-		title: 'Definiamo gli obiettivi',
-		description: 'Individuiamo insieme obiettivi realistici e gli eventuali ostacoli da considerare.',
+		title: 'Obiettivi del percorso',
+		description: 'Concordiamo gli obiettivi e individuiamo gli ostacoli che potrebbero rendere più difficile raggiungerli.',
 	},
 	{
-		number: '3',
-		title: 'Costruiamo il piano',
-		description: 'Ricevi via email un piano nutrizionale personalizzato, normalmente entro cinque giorni lavorativi.',
+		title: 'Preparazione del piano',
+		description: 'Preparo un piano nutrizionale personalizzato sulla base di quanto emerso durante la visita.',
 	},
 	{
-		number: '4',
-		title: 'Proseguiamo insieme',
-		description: 'Le visite di controllo e il supporto via email aiutano ad adattare il percorso nel tempo.',
+		title: 'Invio del piano',
+		description: 'Ricevi il piano via email entro cinque giorni lavorativi dalla prima visita.',
+	},
+	{
+		title: 'Visite di controllo · 30 minuti',
+		description: 'Verifichiamo come sta funzionando il piano. La frequenza degli incontri dipende dalle tue esigenze e dal percorso concordato.',
+	},
+	{
+		title: 'Supporto tra le visite',
+		description: 'Puoi scrivermi via email per affrontare le difficoltà che emergono nel seguire il piano e, se serve, chiedere assistenza telefonica.',
 	},
 ] as const;

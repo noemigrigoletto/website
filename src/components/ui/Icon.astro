@@ -1,0 +1,31 @@
+---
+export type IconName =
+	| 'mail'
+	| 'phone'
+	| 'instagram'
+	| 'facebook'
+	| 'education'
+	| 'life'
+	| 'movement'
+	| 'clinical'
+	| 'special';
+
+interface Props {
+	name: IconName;
+	size?: number;
+}
+
+const { name, size = 24 } = Astro.props;
+---
+
+<svg aria-hidden="true" viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7">
+	{name === 'mail' && <><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></>}
+	{name === 'phone' && <path d="M8.1 3.8 10 7.7 7.6 9.2a15.4 15.4 0 0 0 7.2 7.2l1.5-2.4 3.9 1.9c.5.3.8.8.7 1.4l-.4 2.4c-.1.7-.7 1.2-1.4 1.2C10.3 20.9 3.1 13.7 3.1 4.9c0-.7.5-1.3 1.2-1.4l2.4-.4c.6-.1 1.1.2 1.4.7Z"></path>}
+	{name === 'instagram' && <><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r=".7" fill="currentColor" stroke="none"></circle></>}
+	{name === 'facebook' && <path d="M14.5 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.6 1.7-1.6H18V3.8c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5V10H8v3h3v8"></path>}
+	{name === 'education' && <><path d="M12 7.2c-1.2-1.1-2.6-1.6-4-1.2-2.4.6-3.3 3.3-2.4 6.2 1.2 3.7 3.4 6.2 6.4 6.2s5.2-2.5 6.4-6.2c.9-2.9 0-5.6-2.4-6.2-1.4-.4-2.8.1-4 1.2Z"></path><path d="M12 7.2c-.2-2.2 1-3.7 3.3-4.2M12.1 7.1c-1.3-1.3-2.8-2-4.5-2"></path></>}
+	{name === 'life' && <><path d="M12 20V9"></path><path d="M12 13c-3.8 0-6-2-6-5.5 3.8 0 6 2 6 5.5ZM12 10c3.8 0 6-2 6-5.5-3.8 0-6 2-6 5.5Z"></path><path d="M8 20h8"></path></>}
+	{name === 'movement' && <><circle cx="14.8" cy="4.8" r="1.5"></circle><path d="m10.5 8.2 3.2-1.1 2.5 3.2 2.8 1.2M13.7 8.2l-2 4.3 3.2 2.3 1.5 4.2M11.7 12.5 8 14.1 5.5 18"></path></>}
+	{name === 'clinical' && <><path d="M20 9.3c0 5.3-8 10.2-8 10.2S4 14.6 4 9.3A4.3 4.3 0 0 1 8.3 5c1.6 0 3 .9 3.7 2.1A4.3 4.3 0 0 1 20 9.3Z"></path><path d="M7.4 11.8h2.4l1.2-2.2 2 4 1.2-1.8h2.4"></path></>}
+	{name === 'special' && <><circle cx="12" cy="12" r="8.5"></circle><path d="M7.3 14.8c4.8.4 8.2-1.8 9.7-6.4-4.7-.1-7.9 2-9.7 6.4Z"></path><path d="M6.8 17.2c1.4-3 3.7-5.2 7-6.7"></path></>}
+</svg>

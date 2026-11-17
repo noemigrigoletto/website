@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">Noemi Grigoletto, Dietista</title>
   <desc id="desc">Segnaposto per la futura immagine di condivisione social.</desc>
-  <rect width="1200" height="630" fill="#fbf7ee"/>
-  <path d="M0 450c190-90 340-45 505 15s344 88 695-62v227H0z" fill="#c9d3bc"/>
-  <circle cx="1010" cy="135" r="150" fill="#edb9a4"/>
-  <text x="90" y="250" fill="#27342d" font-family="Georgia,serif" font-size="76">Noemi Grigoletto</text>
-  <text x="96" y="315" fill="#496554" font-family="Arial,sans-serif" font-size="32" letter-spacing="8">DIETISTA</text>
+  <rect width="1200" height="630" fill="#fff9f2"/>
+  <path d="M0 450c190-90 340-45 505 15s344 88 695-62v227H0z" fill="#efd1a6"/>
+  <circle cx="1010" cy="135" r="150" fill="#efc5b3"/>
+  <text x="90" y="250" fill="#321d17" font-family="Georgia,serif" font-size="76">Noemi Grigoletto</text>
+  <text x="96" y="315" fill="#ae674b" font-family="Arial,sans-serif" font-size="32" letter-spacing="8">DIETISTA</text>
 </svg>
