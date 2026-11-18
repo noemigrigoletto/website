@@ -58,6 +58,7 @@ Cards use rounded corners and thin borders. Buttons have a pill silhouette. The 
 ## Components
 
 - The main booking action is a filled brown pill. Secondary actions use an outline.
+- The audience page uses five equal-height cards with an italic title, a themed illustration and the description below. The expanded mobile menu uses the same Lora italic as the homepage.
 - The service links are square, fully clickable cards with a heading, an icon and an arrow.
 - Review cards show the author, five gold stars and the full quotation.
 

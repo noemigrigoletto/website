@@ -18,7 +18,7 @@ import '../styles/service-pages.css';
 			</section>
 			<section class="service-page__panel">
 				<h2>Prenota una visita</h2>
-				<p>Per prenotare una prima visita, compila il modulo online.</p>
+				<p class="booking-intro">Per prenotare una prima visita, compila il modulo online.</p>
 				<ButtonLink href={site.bookingUrl} external>Prenota una prima visita</ButtonLink>
 			</section>
 		</div>
@@ -26,6 +26,8 @@ import '../styles/service-pages.css';
 </BaseLayout>
 
 <style>
+	.booking-intro { margin-bottom: 1.25rem; }
+
 	.service-page__panel .contact-links {
 		margin: 0;
 		padding: 0;

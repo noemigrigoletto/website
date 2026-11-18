@@ -3,27 +3,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/service-pages.css';
 ---
 
-<BaseLayout title="Educazione alimentare | Noemi Grigoletto" description="Laboratori di educazione alimentare nelle scuole, formazioni aziendali e serate informative." noindex>
+<BaseLayout title="Educazione alimentare | Noemi Grigoletto" description="Laboratori di educazione alimentare, formazioni aziendali e serate informative." noindex>
 	<div class="page-shell service-page">
 		<h1 class="service-page__title--italic">Educazione alimentare</h1>
 		<div class="education-list">
 			<section class="service-page__panel education-feature">
 				<div>
-					<h2>Laboratori di educazione alimentare nelle scuole</h2>
+					<h2>Laboratori di educazione alimentare</h2>
 					<p>Attività di gruppo per esplorare il cibo a partire da esempi vicini all’esperienza di bambini e ragazzi.</p>
 				</div>
-				<img src="/images/noemi-educazione-alimentare.webp" alt="Materiali illustrati e pennarelli durante un laboratorio di educazione alimentare" width="900" height="1200" decoding="async" />
+				<img class="workshop-photo" src="/images/noemi-educazione-alimentare.webp" alt="Materiali illustrati e pennarelli durante un laboratorio di educazione alimentare" width="900" height="1200" decoding="async" />
 			</section>
-			<section class="service-page__panel">
-				<h2>Formazioni aziendali</h2>
-				<p>Incontri per affrontare le scelte alimentari nella giornata lavorativa, dalla pausa pranzo all’organizzazione dei pasti.</p>
+			<section class="service-page__panel education-feature">
+				<div>
+					<h2>Formazioni aziendali</h2>
+					<p>Incontri per affrontare le scelte alimentari nella giornata lavorativa, dalla pausa pranzo all’organizzazione dei pasti.</p>
+				</div>
+				<img src="/images/noemi-formazioni-aziendali.webp" alt="Noemi in giacca color cammello mostra una scheda a due partecipanti seduti al tavolo" width="1000" height="750" loading="lazy" decoding="async" />
 			</section>
 			<section class="service-page__panel education-feature">
 				<div>
 					<h2>Serate informative</h2>
 					<p>Incontri di approfondimento su temi legati all’alimentazione, con spazio per domande e dubbi che emergono nella vita quotidiana.</p>
 				</div>
-				<img src="/images/noemi-serate-informative.webp" alt="Noemi presenta una serata informativa sui carboidrati" width="800" height="966" loading="lazy" decoding="async" />
+				<img src="/images/noemi-serate-informative.webp" alt="Noemi presenta una serata informativa sui carboidrati" width="1200" height="1450" loading="lazy" decoding="async" />
 			</section>
 		</div>
 	</div>
@@ -47,6 +50,12 @@ import '../styles/service-pages.css';
 		width: 100%;
 		height: auto;
 		border-radius: var(--radius-sm);
+	}
+
+	.education-feature .workshop-photo {
+		aspect-ratio: 9 / 10;
+		object-fit: cover;
+		object-position: center top;
 	}
 
 	@media (max-width: 43rem) {
