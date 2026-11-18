@@ -1,0 +1,49 @@
+.service-page {
+	padding-block: var(--section-space);
+}
+
+.service-page h1 {
+	font-size: clamp(2.1rem, 6vw, 4.75rem);
+	overflow-wrap: anywhere;
+}
+
+.service-page__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+	gap: 1rem;
+}
+
+.service-page__panel {
+	min-width: 0;
+	padding: clamp(1.25rem, 4vw, 2.5rem);
+	border: var(--border);
+	border-radius: var(--radius-md);
+	background: var(--color-paper);
+}
+
+.service-page__panel h2 {
+	margin-bottom: 0.75rem;
+	font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+.service-page__panel p:last-child,
+.service-page__panel ul:last-child {
+	margin-bottom: 0;
+}
+
+.service-page__panel ul,
+.service-page__panel ol {
+	padding-inline-start: 1.4rem;
+}
+
+.service-page__panel ul {
+	list-style: disc;
+}
+
+.service-page__panel ol {
+	list-style: decimal;
+}
+
+.service-page__panel li + li {
+	margin-top: 0.35rem;
+}

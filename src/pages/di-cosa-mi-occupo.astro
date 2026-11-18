@@ -1,64 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ButtonLink from '../components/ui/ButtonLink.astro';
-import ContactBand from '../components/sections/ContactBand.astro';
+import '../styles/service-pages.css';
 ---
 
-<BaseLayout title="Educazione alimentare | Noemi Grigoletto" description="Percorsi individuali, laboratori e formazione aziendale per portare l’educazione alimentare nella vita quotidiana." noindex>
-	<div class="page-shell education">
+<BaseLayout title="Educazione alimentare | Noemi Grigoletto" description="Laboratori di educazione alimentare nelle scuole, formazioni aziendali e serate informative." noindex>
+	<div class="page-shell service-page">
 		<h1>Educazione alimentare</h1>
-		<p class="education__intro">Capire come mangiamo aiuta a fare scelte più consapevoli nella vita di tutti i giorni. Nei percorsi individuali e negli incontri di gruppo, partiamo dalle domande che emergono a tavola, facendo la spesa o organizzando i pasti.</p>
-
-		<section aria-labelledby="individual-title">
-			<h2 id="individual-title">Percorso individuale</h2>
-			<p>In ambulatorio partiamo dalle tue abitudini, dalle domande che hai sul cibo e dalle situazioni in cui scegliere cosa mangiare ti risulta più difficile. Possiamo lavorare, per esempio, su come organizzare i pasti durante la settimana, leggere le etichette o trovare alternative che rispettino i tuoi gusti e i tuoi orari.</p>
-			<p>Individuiamo insieme piccoli cambiamenti da provare nella quotidianità e ripartiamo da ciò che ha funzionato per te.</p>
-		</section>
-
-		<section aria-labelledby="workshop-title">
-			<h2 id="workshop-title">Laboratori</h2>
-			<p>I laboratori portano l’educazione alimentare in un contesto di gruppo. Partiamo da esempi concreti, come confrontare due prodotti o ragionare su come comporre un pasto, per discutere le scelte possibili e chiarire i dubbi che emergono.</p>
-		</section>
-
-		<section aria-labelledby="company-title">
-			<h2 id="company-title">Formazione aziendale</h2>
-			<p>Gli incontri in azienda partono dalle esigenze di chi partecipa. Possiamo parlare di pausa pranzo, di come organizzare i pasti quando gli orari cambiano o di quali informazioni cercare sulle confezioni quando si fa la spesa.</p>
-		</section>
-
-		<ButtonLink href="/contattami">Contattami per informazioni</ButtonLink>
+		<div class="service-page__grid">
+			<section class="service-page__panel">
+				<h2>Laboratori di educazione alimentare nelle scuole</h2>
+				<p>Attività di gruppo per esplorare il cibo a partire da esempi vicini all’esperienza di bambini e ragazzi, come la merenda e i pasti di tutti i giorni.</p>
+			</section>
+			<section class="service-page__panel">
+				<h2>Formazioni aziendali</h2>
+				<p>Incontri per affrontare le scelte alimentari nella giornata lavorativa, dalla pausa pranzo all’organizzazione dei pasti quando gli orari cambiano.</p>
+			</section>
+			<section class="service-page__panel">
+				<h2>Serate informative</h2>
+				<p>Incontri di approfondimento su temi legati all’alimentazione, con spazio per domande e dubbi che emergono nella vita quotidiana.</p>
+			</section>
+		</div>
 	</div>
-	<ContactBand />
 </BaseLayout>
-
-<style>
-	.education {
-		padding-block: var(--section-space);
-	}
-
-	.education__intro {
-		max-width: 46rem;
-		font-size: 1.125rem;
-		margin-bottom: 2.5rem;
-	}
-
-	.education section {
-		max-width: 55rem;
-		margin-bottom: 1rem;
-		padding: clamp(1.5rem, 4vw, 2.5rem);
-		border: var(--border);
-		border-radius: var(--radius-lg);
-		background: var(--color-paper);
-	}
-
-	.education section h2 {
-		font-size: clamp(1.5rem, 3vw, 2.25rem);
-	}
-
-	.education section p:last-child {
-		margin-bottom: 0;
-	}
-
-	.education :global(.button-link) {
-		margin-top: 1rem;
-	}
-</style>

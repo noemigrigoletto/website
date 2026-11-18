@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ButtonLink from '../../components/ui/ButtonLink.astro';
+import '../../styles/service-pages.css';
+
+const areas = [
+	{
+		title: 'Educazione alimentare',
+		items: ['Rapporto con il proprio corpo e con il cibo', 'Alimentazione consapevole e riconoscimento dei segnali di fame e sazietà'],
+	},
+	{
+		title: 'Composizione corporea',
+		items: ['Ricomposizione corporea', 'Dimagrimento', 'Incremento della massa muscolare'],
+	},
+	{
+		title: 'Esigenze particolari',
+		items: [
+			'Bambini e adolescenti nelle diverse fasi della crescita e dello sviluppo',
+			'Gravidanza e allattamento',
+			'Menopausa',
+			'Persone anziane fragili',
+			'Alimentazione vegetariana o vegana',
+		],
+	},
+	{ title: 'Alimentazione nell’attività fisica e nello sport' },
+	{
+		title: 'Patologie',
+		items: [
+			'Diabete di tipo 2, alterata glicemia a digiuno e intolleranza glucidica',
+			'Sindrome metabolica',
+			'Ipertensione',
+			'Dislipidemie (ipercolesterolemia e ipertrigliceridemia)',
+			'Patologie organiche (renali, epatiche e gastrointestinali)',
+			'Disturbi del comportamento alimentare',
+			'Celiachia',
+			'Diabete di tipo 1',
+			'Allergie e intolleranze alimentari',
+		],
+	},
+];
+---
+
+<BaseLayout title="A chi è rivolto | Noemi Grigoletto" description="A chi si rivolge il percorso nutrizionale personalizzato." noindex>
+	<div class="page-shell service-page">
+		<h1>A chi è rivolto</h1>
+		<div class="service-page__grid">
+			{areas.map(({ title, items }) => (
+				<section class="service-page__panel">
+					<h2>{title}</h2>
+					{items && <ul>{items.map((item) => <li>{item}</li>)}</ul>}
+				</section>
+			))}
+		</div>
+		<ButtonLink href="/consulenze/come-si-svolge" class="next-link">Come si svolge</ButtonLink>
+	</div>
+</BaseLayout>
+
+<style>
+	.service-page__panel:last-child {
+		grid-column: 1 / -1;
+	}
+
+	:global(.next-link) {
+		margin-top: 1.5rem;
+	}
+</style>

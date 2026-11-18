@@ -5,10 +5,9 @@ import '@fontsource/poppins/500.css';
 import '@fontsource/poppins/700.css';
 import '@fontsource/lora/400-italic.css';
 import ButtonLink from '../components/ui/ButtonLink.astro';
-import SectionHeading from '../components/ui/SectionHeading.astro';
 import ContactBand from '../components/sections/ContactBand.astro';
 import Icon from '../components/ui/Icon.astro';
-import { reviewPlaceholders } from '../data/reviews';
+import { reviews } from '../data/reviews';
 import { foodEducation } from '../data/services';
 import { site } from '../data/site';
 ---
@@ -44,28 +43,27 @@ import { site } from '../data/site';
 		</div>
 	</aside>
 
-	<section class="intro-section">
-		<div class="page-shell intro-section__grid">
-			<div class="intro-section__title">
-				<p class="eyebrow">Piacere, sono Noemi</p>
-				<h2>La nutrizione, prima di tutto, riguarda la persona.</h2>
-			</div>
-			<div class="intro-section__copy">
-				<p class="intro-section__lead">Sono una dietista laureata con lode all’Università di Padova. Nel mio lavoro unisco competenze cliniche ed educazione alimentare per costruire percorsi realmente sostenibili.</p>
-				<p>Anche la mia storia personale mi ha insegnato quanto falsi miti e mode alimentari possano allontanarci dall’ascolto del corpo. Oggi accompagno le persone verso scelte più consapevoli, senza trasformare il cibo in una continua rinuncia.</p>
-				<ButtonLink href="/chi-sono" variant="text">Conosci meglio la mia storia</ButtonLink>
-			</div>
-		</div>
-	</section>
-
 	<section class="training-section" aria-labelledby="training-title">
 		<div class="page-shell training-section__inner">
 			<div>
 				<h2 id="training-title">La mia formazione</h2>
 			</div>
 			<div class="training-section__facts">
-				<article><h3>Laurea e master</h3><p>Laurea triennale in Dietistica conseguita con lode all’Università di Padova e formazione post-laurea con un master.</p></article>
-				<article><h3>Oltre 1.000</h3><p>pazienti seguiti nel mio percorso professionale.</p></article>
+				<article>
+					<h3>Laurea in Dietistica (L-SNT/3)</h3>
+					<p>Università degli Studi di Padova</p>
+					<h4>Tirocini formativi</h4>
+					<ul>
+						<li><strong>Ristorazione collettiva</strong> presso Serenissima Ristorazione S.p.A.</li>
+						<li><strong>Educazione alimentare</strong> presso GASOL Foundation a Barcellona.</li>
+						<li><strong>Dietetica e Nutrizione Clinica</strong> presso il Policlinico Universitario di Padova.</li>
+					</ul>
+				</article>
+				<article>
+					<h3>Master in nutrizione sportiva</h3>
+					<p>SANIS</p>
+				</article>
+				<article><h3>Oltre 500</h3><p>pazienti seguiti nel mio percorso professionale.</p></article>
 			</div>
 		</div>
 	</section>
@@ -74,8 +72,8 @@ import { site } from '../data/site';
 		<div class="page-shell philosophy-section__inner">
 			<p class="eyebrow">La mia missione</p>
 			<h2 id="philosophy-title">Rendere la sana alimentazione un’abitudine spontanea e consapevole.</h2>
-			<p class="philosophy-section__lead">Credo nel potere dell’educazione alimentare: ci aiuta a prenderci cura della salute, a vivere con maggiore equilibrio e ad appagare i nostri sensi, senza trasformare il cibo in un insieme di regole e rinunce.</p>
-			<blockquote>“Insieme faremo un percorso che ti porterà a raggiungere il tuo obiettivo e a mantenerlo attraverso la creazione di sane abitudini che diventeranno il tuo stile di vita.”</blockquote>
+			<p class="philosophy-section__lead">Anche la mia storia personale mi ha insegnato quanto falsi miti e mode alimentari possano allontanarci dall’ascolto del corpo. Insieme faremo un percorso che ti porterà a raggiungere il tuo obiettivo e a mantenerlo attraverso la creazione di sane abitudini che diventeranno il tuo stile di vita.</p>
+			<p class="philosophy-section__reminder">Ricordati che l’importante non è la velocità con cui raggiungi il tuo obiettivo, ma credere fermamente di poterlo raggiungere.</p>
 			<p class="philosophy-section__closing">Io sono qui per accompagnarti.</p>
 		</div>
 	</section>
@@ -91,7 +89,7 @@ import { site } from '../data/site';
 				</a>
 				<a class="service-card" href="/consulenze">
 					<Icon name="clinical" size={42} />
-					<h3>Consulenze nutrizionali</h3>
+					<h3>Percorso nutrizionale personalizzato</h3>
 					<span aria-hidden="true">→</span>
 				</a>
 			</div>
@@ -100,18 +98,15 @@ import { site } from '../data/site';
 
 	<section class="reviews-section" aria-labelledby="reviews-title">
 		<div class="page-shell">
-			<SectionHeading
-				eyebrow="Parole sul percorso"
-				title="Ascolto, chiarezza e piccoli cambiamenti quotidiani."
-				description="Questa sezione è una proposta grafica. I testi seguenti sono esempi fittizi e dovranno essere sostituiti con recensioni autentiche e approvate prima della pubblicazione."
-			/>
-			<div class="reviews-grid">
-				{reviewPlaceholders.map((review) => (
-					<article class="review-card">
-						<p class="review-card__label">Recensione dimostrativa</p>
-						<blockquote>“{review.quote}”</blockquote>
-						<p class="review-card__name">{review.name}</p>
-					</article>
+			<h2 id="reviews-title">Recensioni</h2>
+			<p id="reviews-hint">Scorri per leggere le recensioni.</p>
+			<div class="reviews-track" role="region" aria-labelledby="reviews-title" aria-describedby="reviews-hint" tabindex="0">
+				{reviews.map(({ name, quote }) => (
+					<figure class="review-card">
+						<figcaption><strong>{name}</strong></figcaption>
+						<span class="review-card__rating" role="img" aria-label="5 stelle su 5">★★★★★</span>
+						<blockquote>{quote}</blockquote>
+					</figure>
 				))}
 			</div>
 		</div>
@@ -171,15 +166,6 @@ import { site } from '../data/site';
 			linear-gradient(135deg, #f8f3ef, #eee2da);
 	}
 
-	.hero::after {
-		position: absolute;
-		top: 12%;
-		right: 8%;
-		color: #a16d50;
-		content: '✦';
-		font-size: 2rem;
-	}
-
 	.hero__grid {
 		display: grid;
 		min-height: min(48rem, calc(100svh - 6rem));
@@ -202,8 +188,7 @@ import { site } from '../data/site';
 		letter-spacing: -0.012em;
 	}
 
-	.hero h1 em,
-	.philosophy-section em {
+	.hero h1 em {
 		color: var(--color-terracotta);
 		font-family: var(--font-display);
 		font-weight: 400;
@@ -275,34 +260,6 @@ import { site } from '../data/site';
 		transform: translateY(-2px);
 	}
 
-	.intro-section {
-		padding-block: var(--section-space);
-	}
-
-	.intro-section__grid {
-		display: grid;
-		grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.75fr);
-		gap: clamp(3rem, 8vw, 8rem);
-	}
-
-	.intro-section h2 {
-		max-width: 46rem;
-		margin: 0;
-	}
-
-	.intro-section__copy {
-		padding-top: 2.75rem;
-	}
-
-	.intro-section__copy p {
-		color: var(--color-cocoa-soft);
-	}
-
-	.intro-section__copy .intro-section__lead {
-		color: var(--color-cocoa);
-		font-size: 1.2rem;
-	}
-
 	.philosophy-section {
 		background: linear-gradient(135deg, #f5ede7, #e7d8ce);
 	}
@@ -320,19 +277,20 @@ import { site } from '../data/site';
 
 	.philosophy-section__lead {
 		max-width: 48rem;
-		margin: 0 auto clamp(3rem, 6vw, 5rem);
+		margin: 0 auto 2rem;
 		color: var(--color-cocoa-soft);
 		font-size: clamp(1.08rem, 1.6vw, 1.28rem);
 	}
 
-	.philosophy-section blockquote {
-		max-width: 61rem;
+	.philosophy-section__reminder {
+		max-width: 43rem;
 		margin: 0 auto 2rem;
 		font-family: var(--font-display);
-		font-size: clamp(2rem, 4.3vw, 4.25rem);
+		font-size: clamp(1.45rem, 3vw, 2.35rem);
+		font-style: italic;
 		font-weight: 400;
 		letter-spacing: -0.015em;
-		line-height: 1.13;
+		line-height: 1.35;
 	}
 
 	.philosophy-section__closing {
@@ -367,7 +325,15 @@ import { site } from '../data/site';
 	}
 
 	.training-section h2 { margin-bottom: 0; }
-	.training-section__facts h3 { margin-bottom: .75rem; }
+	.training-section__facts h3 { margin-bottom: 0.75rem; }
+	.training-section__facts h4 { margin: 1.25rem 0 0.5rem; font-weight: 700; }
+	.training-section__facts ul {
+		margin: 0;
+		padding-inline-start: 1.25rem;
+		list-style: disc;
+		color: var(--color-cocoa-soft);
+	}
+	.training-section__facts li + li { margin-top: 0.4rem; }
 	.training-section__facts p { margin-bottom: 0; color: var(--color-cocoa-soft); }
 	.services-section {
 		background: var(--color-ivory);
@@ -425,45 +391,43 @@ import { site } from '../data/site';
 		padding-block: var(--section-space);
 	}
 
-	.reviews-grid {
+	.reviews-track {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-auto-flow: column;
+		grid-auto-columns: min(88%, 26rem);
+		align-items: start;
 		gap: 1rem;
+		overflow-x: auto;
+		padding-bottom: 1rem;
+		scroll-snap-type: x mandatory;
 	}
 
 	.review-card {
-		display: flex;
-		min-height: 22rem;
-		flex-direction: column;
+		margin: 0;
+		padding: clamp(1.25rem, 3vw, 2rem);
 		border: var(--border);
-		border-radius: 2rem;
+		border-radius: var(--radius-lg);
 		background: var(--color-paper);
-		box-shadow: 0 1.25rem 3rem rgb(93 55 38 / 0.06);
-		padding: clamp(1.5rem, 3vw, 2.25rem);
+		scroll-snap-align: start;
 	}
 
-	.review-card__label {
-		margin-bottom: 2.5rem;
-		color: var(--color-terracotta);
-		font-size: 0.8rem;
-		font-weight: 600;
-		letter-spacing: 0.02em;
+	.review-card figcaption {
+		font-size: 1.125rem;
+	}
+
+	.review-card__rating {
+		display: block;
+		margin: 0.2rem 0 0.85rem;
+		color: #a36b00;
+		font-size: 1.35rem;
+		letter-spacing: 0.12em;
 	}
 
 	.review-card blockquote {
-		margin: 0 0 2rem;
-		font-family: var(--font-display);
-		font-style: italic;
-		font-size: clamp(1.4rem, 2.2vw, 1.9rem);
-		font-weight: 400;
-		line-height: 1.3;
-	}
-
-	.review-card__name {
-		margin: auto 0 0;
-		color: var(--color-cocoa-soft);
-		font-size: 0.88rem;
-		font-weight: 700;
+		margin: 0;
+		line-height: 1.65;
+		white-space: pre-line;
+		overflow-wrap: anywhere;
 	}
 
 	@media (max-width: 64rem) {
@@ -472,14 +436,6 @@ import { site } from '../data/site';
 			grid-template-columns: 1fr 0.8fr;
 		}
 
-		.reviews-grid {
-			grid-template-columns: 1fr 1fr;
-		}
-
-		.review-card:last-child {
-			grid-column: 1 / -1;
-			min-height: 18rem;
-		}
 	}
 
 	@media (max-width: 48rem) {
@@ -500,7 +456,6 @@ import { site } from '../data/site';
 			display: grid;
 		}
 
-		.intro-section__grid,
 		.training-section__inner {
 			grid-template-columns: 1fr;
 		}
@@ -509,18 +464,5 @@ import { site } from '../data/site';
 			min-height: 5rem;
 		}
 
-		.intro-section__copy {
-			padding-top: 0;
-		}
-
-		.reviews-grid {
-			grid-template-columns: 1fr;
-		}
-
-		.review-card,
-		.review-card:last-child {
-			grid-column: auto;
-			min-height: 19rem;
-		}
 	}
 </style>

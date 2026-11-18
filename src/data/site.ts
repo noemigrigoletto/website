@@ -46,7 +46,7 @@ export const site = {
 		},
 		{
 			label: 'Diario alimentare',
-			description: 'Il diario facoltativo da compilare per 3–5 giorni prima della visita.',
+			description: 'Il diario facoltativo da compilare per 3–7 giorni prima della visita.',
 			href: 'https://drive.google.com/file/d/1r-6AfYjFo2yBk9dN2TZB_lTSD60gIUln/view?usp=sharing',
 		},
 	] satisfies DownloadResource[],
