@@ -541,7 +541,7 @@ h3 {
 	padding: 1rem 1.25rem;
 }
 
-@media (max-width: 72rem) {
+@media (max-width: 80rem) {
 	.desktop-nav,
 	.desktop-cta {
 		display: none;

@@ -19,12 +19,12 @@ import { site } from '../data/site';
 	<section class="hero" aria-labelledby="hero-title">
 		<div class="page-shell hero__grid">
 			<div class="hero__content">
-				<p class="eyebrow">Dietista · Consulenze online e in ambulatorio</p>
+				<p class="eyebrow">Dietista nutrizionista · Consulenze online e in ambulatorio</p>
 				<h1 id="hero-title">il cibo è <em>il tuo alleato</em></h1>
 				<p class="hero__lead">Un percorso nutrizionale fatto di ascolto e consapevolezza, lontano da diete rigide e rinunce.</p>
 				<div class="hero__actions">
 					<ButtonLink href={site.bookingUrl} external>Prenota una prima visita</ButtonLink>
-					<ButtonLink href="/contattami" variant="secondary">Contattami</ButtonLink>
+					<ButtonLink href="#contatti-rapidi" variant="secondary">Contattami</ButtonLink>
 				</div>
 			</div>
 
@@ -34,7 +34,7 @@ import { site } from '../data/site';
 		</div>
 	</section>
 
-	<aside class="quick-contact" aria-label="Contatti rapidi">
+	<aside id="contatti-rapidi" class="quick-contact" aria-label="Contatti rapidi">
 		<div class="page-shell quick-contact__inner">
 			<a href={`mailto:${site.email}`} aria-label={`Scrivi a ${site.email}`} title="Scrivimi via email"><Icon name="mail" size={27} /><span class="sr-only">Scrivimi via email</span></a>
 			<a href={site.phoneHref} aria-label={`Chiama ${site.phoneDisplay}`} title="Chiamami"><Icon name="phone" size={27} /><span class="sr-only">Chiamami</span></a>
@@ -56,14 +56,14 @@ import { site } from '../data/site';
 					<ul>
 						<li><strong>Ristorazione collettiva</strong> presso Serenissima Ristorazione S.p.A.</li>
 						<li><strong>Educazione alimentare</strong> presso GASOL Foundation a Barcellona.</li>
-						<li><strong>Dietetica e Nutrizione Clinica</strong> presso il Policlinico Universitario di Padova.</li>
+						<li><strong>Dietetica e Nutrizione Clinica</strong> presso il <span class="training-section__placement">Policlinico Universitario di Padova.</span></li>
 					</ul>
 				</article>
 				<article>
 					<h3>Master in nutrizione sportiva</h3>
 					<p>SANIS</p>
 				</article>
-				<article><h3>Oltre 500</h3><p>pazienti seguiti nel mio percorso professionale.</p></article>
+				<article><h3>500+</h3><p>pazienti seguiti nel mio percorso professionale.</p></article>
 			</div>
 		</div>
 	</section>
@@ -74,7 +74,32 @@ import { site } from '../data/site';
 			<h2 id="philosophy-title">Rendere la sana alimentazione un’abitudine spontanea e consapevole.</h2>
 			<p class="philosophy-section__lead">Anche la mia storia personale mi ha insegnato quanto falsi miti e mode alimentari possano allontanarci dall’ascolto del corpo. Insieme faremo un percorso che ti porterà a raggiungere il tuo obiettivo e a mantenerlo attraverso la creazione di sane abitudini che diventeranno il tuo stile di vita.</p>
 			<p class="philosophy-section__reminder">Ricordati che l’importante non è la velocità con cui raggiungi il tuo obiettivo, ma credere fermamente di poterlo raggiungere.</p>
-			<p class="philosophy-section__closing">Io sono qui per accompagnarti.</p>
+			<!-- impeccable-carbonize-start 51cf2836 -->
+			<style data-impeccable-css="51cf2836">
+			[data-impeccable-variants="51cf2836"] [data-impeccable-variant="1"] > .mission-closing-clear {
+			margin: 0;
+			color: var(--color-terracotta);
+			font: 700 clamp(1.25rem, 2.1vw, 1.5rem)/1.35 var(--font-sans);
+			}
+			
+			[data-impeccable-variants="51cf2836"] [data-impeccable-variant="2"] > .mission-closing-warm {
+			margin: 0;
+			color: var(--color-cocoa);
+			font: italic 400 clamp(1.4rem, 2.4vw, 1.8rem)/1.35 var(--font-display);
+			}
+			
+			[data-impeccable-variants="51cf2836"] [data-impeccable-variant="3"] > .mission-closing-strong {
+			max-width: 22ch;
+			margin: 0 auto;
+			color: var(--color-cocoa);
+			font: 700 clamp(1.55rem, 2.8vw, 2.1rem)/1.25 var(--font-sans);
+			text-wrap: balance;
+			}
+			</style>
+			<!-- impeccable-carbonize-end 51cf2836 -->
+			<div data-impeccable-variant="1" style="display: contents">
+			  <p class="mission-closing-clear">Io sono qui per accompagnarti.</p>
+			</div>
 		</div>
 	</section>
 
@@ -330,9 +355,11 @@ import { site } from '../data/site';
 	.training-section__facts ul {
 		margin: 0;
 		padding-inline-start: 1.25rem;
+		font-size: 0.875rem;
 		list-style: disc;
 		color: var(--color-cocoa-soft);
 	}
+	.training-section__placement { white-space: nowrap; }
 	.training-section__facts li + li { margin-top: 0.4rem; }
 	.training-section__facts p { margin-bottom: 0; color: var(--color-cocoa-soft); }
 	.services-section {
@@ -343,6 +370,7 @@ import { site } from '../data/site';
 	.services-grid {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 22rem));
+		margin-top: clamp(1.5rem, 4vw, 3rem);
 		gap: clamp(0.75rem, 3vw, 2rem);
 	}
 
@@ -363,7 +391,7 @@ import { site } from '../data/site';
 	}
 
 	.service-card:nth-child(2) {
-		background: var(--color-blush-light);
+		background: #d8beb0;
 	}
 
 	.service-card:hover {
@@ -389,6 +417,10 @@ import { site } from '../data/site';
 	.reviews-section {
 		background: linear-gradient(145deg, #f2e8e1, #e5d4c9);
 		padding-block: var(--section-space);
+	}
+
+	#reviews-hint {
+		margin-bottom: 1.25rem;
 	}
 
 	.reviews-track {
@@ -425,6 +457,7 @@ import { site } from '../data/site';
 
 	.review-card blockquote {
 		margin: 0;
+		font-size: 0.9375rem;
 		line-height: 1.65;
 		white-space: pre-line;
 		overflow-wrap: anywhere;
@@ -464,5 +497,8 @@ import { site } from '../data/site';
 			min-height: 5rem;
 		}
 
+	}
+	@media (max-width: 23rem) {
+		.training-section__placement { white-space: normal; }
 	}
 </style>

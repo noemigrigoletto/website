@@ -46,3 +46,13 @@ const isCurrent = (href: string) => href === currentPath;
 		</details>
 	</div>
 </header>
+
+<script>
+	const mobileNavigation = document.querySelector<HTMLDetailsElement>('.mobile-nav');
+
+	mobileNavigation?.addEventListener('click', (event) => {
+		if (event.target instanceof Element && event.target.closest('a[href^="/#"]')) {
+			mobileNavigation.open = false;
+		}
+	});
+</script>

@@ -5,8 +5,8 @@ export interface NavigationItem {
 
 export const navigation = [
 	{ label: 'Home', href: '/' },
-	{ label: 'Chi sono', href: '/chi-sono' },
-	{ label: 'Di cosa mi occupo', href: '/di-cosa-mi-occupo' },
-	{ label: 'Consulenze', href: '/consulenze' },
-	{ label: 'Contattami', href: '/contattami' },
+	{ label: 'La mia missione', href: '/#philosophy-title' },
+	{ label: 'Educazione alimentare', href: '/di-cosa-mi-occupo' },
+	{ label: 'Percorso nutrizionale', href: '/consulenze' },
+	{ label: 'Contattami', href: '/#contatti-rapidi' },
 ] as const satisfies readonly NavigationItem[];

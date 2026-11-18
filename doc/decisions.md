@@ -7,6 +7,7 @@ Last reviewed: 2026-09-18.
 - The site is entirely in Italian. Technical documentation and code may be in English.
 - The five top-level pages are fixed: Home, Chi sono, Di cosa mi occupo, Consulenze, and Contattami.
 - The clean routes are `/`, `/chi-sono`, `/di-cosa-mi-occupo`, `/consulenze`, and `/contattami`.
+- The shared menu links to Home, La mia missione, Educazione alimentare, Percorso nutrizionale, and Contattami. Mission and contact links jump to their completed sections on the homepage.
 - The current Noemi Grigoletto website is the primary content source. Rewriting may improve clarity and warmth but must preserve meaning and professional scope.
 - Do not invent qualifications, services, medical claims, clinic addresses, prices, published testimonials, statistics, memberships, certifications, outcomes, or legal claims.
 - The homepage may temporarily show fictional review copy for layout evaluation only. Every example must be visibly labelled as fictional and replaced with genuine, approved feedback before publication.
@@ -46,4 +47,4 @@ Last reviewed: 2026-09-18.
 
 ## Homepage typography
 
-- Use Poppins and Lora for the homepage reference-inspired design; these are the typefaces identified in the supplied PDF. Keep the typography under review before extending it to shared navigation and other pages.
+- Use Poppins and Lora for the homepage reference-inspired design; these are the typefaces identified in the supplied PDF. Use Lora Italic for the page titles of Educazione alimentare, Percorso nutrizionale personalizzato, and Come si svolge.
