@@ -207,13 +207,13 @@ h3 {
 
 .button-link--primary {
 	border-color: transparent;
-	background: linear-gradient(135deg, var(--color-terracotta), var(--color-caramel));
+	background: linear-gradient(135deg, #835039, #925f47);
 	box-shadow: 0 0.8rem 1.8rem rgb(174 103 75 / 0.18);
 	color: var(--color-paper);
 }
 
 .button-link--primary:hover {
-	background: linear-gradient(135deg, var(--color-cocoa), var(--color-terracotta));
+	background: linear-gradient(135deg, var(--color-cocoa), #835039);
 	box-shadow: 0 1rem 2.2rem rgb(50 29 23 / 0.2);
 }
 
@@ -323,7 +323,7 @@ h3 {
 }
 
 .desktop-nav a:hover::after,
-.desktop-nav a[aria-current='page']::after {
+.desktop-nav a[aria-current]::after {
 	transform: scaleX(1);
 	transform-origin: left;
 }
@@ -386,7 +386,7 @@ h3 {
 	text-decoration: none;
 }
 
-.mobile-nav__panel a[aria-current='page'] {
+.mobile-nav__panel a[aria-current] {
 	color: var(--color-terracotta);
 }
 

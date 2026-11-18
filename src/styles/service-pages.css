@@ -1,13 +1,14 @@
 @import "@fontsource/lora/400-italic.css";
 
 .service-page {
-	padding-block: var(--section-space);
+	padding-block: clamp(3rem, 7vw, 7rem);
 }
 
 .service-page h1 {
 	margin-bottom: clamp(1.75rem, 5vw, 3.5rem);
 	font-size: clamp(2.1rem, 6vw, 4.75rem);
-	overflow-wrap: anywhere;
+	overflow-wrap: break-word;
+	text-wrap: balance;
 }
 
 .service-page__title--italic {
@@ -58,4 +59,13 @@
 
 .service-page__panel li + li {
 	margin-top: 0.35rem;
+}
+
+.service-page__back {
+	display: inline-flex;
+	align-items: center;
+	min-height: 2.75rem;
+	margin-bottom: 1rem;
+	color: var(--color-cocoa-soft);
+	font-size: 0.875rem;
 }

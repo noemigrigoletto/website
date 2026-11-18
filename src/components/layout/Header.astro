@@ -5,7 +5,10 @@ import { navigation } from '../../data/navigation';
 import { site } from '../../data/site';
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
-const isCurrent = (href: string) => href === currentPath;
+const currentState = (href: string) => {
+	if (href === currentPath) return 'page';
+	if (href !== '/' && currentPath.startsWith(`${href}/`)) return 'location';
+};
 ---
 
 <header class="site-header">
@@ -16,7 +19,7 @@ const isCurrent = (href: string) => href === currentPath;
 			<ul>
 				{navigation.map((item) => (
 					<li>
-						<a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+						<a href={item.href} aria-current={currentState(item.href)}>{item.label}</a>
 					</li>
 				))}
 			</ul>
@@ -37,7 +40,7 @@ const isCurrent = (href: string) => href === currentPath;
 				<nav aria-label="Navigazione mobile">
 					<ul>
 						{navigation.map((item) => (
-							<li><a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a></li>
+							<li><a href={item.href} aria-current={currentState(item.href)}>{item.label}</a></li>
 						))}
 					</ul>
 				</nav>
@@ -46,13 +49,3 @@ const isCurrent = (href: string) => href === currentPath;
 		</details>
 	</div>
 </header>
-
-<script>
-	const mobileNavigation = document.querySelector<HTMLDetailsElement>('.mobile-nav');
-
-	mobileNavigation?.addEventListener('click', (event) => {
-		if (event.target instanceof Element && event.target.closest('a[href^="/#"]')) {
-			mobileNavigation.open = false;
-		}
-	});
-</script>

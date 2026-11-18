@@ -6,19 +6,52 @@ import '../styles/service-pages.css';
 <BaseLayout title="Educazione alimentare | Noemi Grigoletto" description="Laboratori di educazione alimentare nelle scuole, formazioni aziendali e serate informative." noindex>
 	<div class="page-shell service-page">
 		<h1 class="service-page__title--italic">Educazione alimentare</h1>
-		<div class="service-page__grid">
-			<section class="service-page__panel">
-				<h2>Laboratori di educazione alimentare nelle scuole</h2>
-				<p>Attività di gruppo per esplorare il cibo a partire da esempi vicini all’esperienza di bambini e ragazzi.</p>
+		<div class="education-list">
+			<section class="service-page__panel education-feature">
+				<div>
+					<h2>Laboratori di educazione alimentare nelle scuole</h2>
+					<p>Attività di gruppo per esplorare il cibo a partire da esempi vicini all’esperienza di bambini e ragazzi.</p>
+				</div>
+				<img src="/images/noemi-educazione-alimentare.webp" alt="Materiali illustrati e pennarelli durante un laboratorio di educazione alimentare" width="900" height="1200" decoding="async" />
 			</section>
 			<section class="service-page__panel">
 				<h2>Formazioni aziendali</h2>
 				<p>Incontri per affrontare le scelte alimentari nella giornata lavorativa, dalla pausa pranzo all’organizzazione dei pasti.</p>
 			</section>
-			<section class="service-page__panel">
-				<h2>Serate informative</h2>
-				<p>Incontri di approfondimento su temi legati all’alimentazione, con spazio per domande e dubbi che emergono nella vita quotidiana.</p>
+			<section class="service-page__panel education-feature">
+				<div>
+					<h2>Serate informative</h2>
+					<p>Incontri di approfondimento su temi legati all’alimentazione, con spazio per domande e dubbi che emergono nella vita quotidiana.</p>
+				</div>
+				<img src="/images/noemi-serate-informative.webp" alt="Noemi presenta una serata informativa sui carboidrati" width="800" height="966" loading="lazy" decoding="async" />
 			</section>
 		</div>
 	</div>
 </BaseLayout>
+
+<style>
+	.education-list {
+		display: grid;
+		gap: 1rem;
+		max-width: 60rem;
+	}
+
+	.education-feature {
+		display: grid;
+		grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+		align-items: center;
+		gap: clamp(1rem, 4vw, 3rem);
+	}
+
+	.education-feature img {
+		width: 100%;
+		height: auto;
+		border-radius: var(--radius-sm);
+	}
+
+	@media (max-width: 43rem) {
+		.education-feature {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

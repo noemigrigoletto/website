@@ -10,7 +10,7 @@ Last verified: 2026-09-18.
 - The original Astro starter has been replaced with a custom static site foundation.
 - The shared header, desktop navigation, native mobile navigation, footer, buttons, section headings, contact CTA, metadata layout, design tokens, and responsive rules are implemented.
 - The homepage incorporates the first design-feedback round: revised hero message, rounder typography, icon-only quick contacts, a single-column mission section, symbolic service cards, and the eight supplied reviews in a horizontal scroll row.
-- Noemi's original mark and the newly supplied portrait are stored locally in `public/images/`. The portrait is a metadata-free, web-optimized WebP file.
+- Noemi's original mark and the newly supplied portrait are stored locally in `public/images/`. The supplied homepage portrait, school workshop photo and cropped information-evening photo are metadata-free WebP assets.
 - Contact details, booking URL, social links, and downloadable resource URLs are typed and centralized in `src/data/site.ts`.
 - Navigation is centralized in `src/data/navigation.ts`; service summaries and journey steps are in `src/data/services.ts`.
 
@@ -19,10 +19,10 @@ Last verified: 2026-09-18.
 | Route | State |
 | --- | --- |
 | `/` | Homepage implemented; awaiting or incorporating design feedback before final sign-off. |
-| `/chi-sono` | Review placeholder only; final page still required. |
+| `/chi-sono` | Short biography with links to training and mission on the homepage. |
 | `/di-cosa-mi-occupo` | Education page with school workshops, workplace training and public information evenings. |
 | `/consulenze` | Personalized nutrition overview linking to `/consulenze/a-chi-e-rivolto` and `/consulenze/come-si-svolge`. |
-| `/contattami` | Review placeholder only; final page still required. |
+| `/contattami` | Contact details and first-visit booking. |
 
 The placeholder pages deliberately use `noindex` until their final content is implemented.
 
@@ -42,7 +42,7 @@ The placeholder pages deliberately use `noindex` until their final content is im
 
 - Review the homepage updates from the 17 November meeting, including the approximate patient count and wording of training and services. Food imagery remains to be defined.
 - Obtain homepage feedback on the revised design, including the new review layout.
-- Complete Chi sono and Contattami and review the new education and consultation pages.
+- Review the education and consultation pages.
 - Replace `public/images/social-preview-placeholder.svg` with a final approved social preview asset.
 - Remove `noindex` from each remaining page when it is complete.
 - Re-run route, responsive, keyboard-navigation, link, build, and Astro checks after each page group.

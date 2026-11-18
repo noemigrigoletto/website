@@ -7,7 +7,7 @@ import '@fontsource/lora/400-italic.css';
 import ButtonLink from '../components/ui/ButtonLink.astro';
 import ContactBand from '../components/sections/ContactBand.astro';
 import Icon from '../components/ui/Icon.astro';
-import { reviews } from '../data/reviews';
+import { reviewColumns } from '../data/reviews';
 import { foodEducation } from '../data/services';
 import { site } from '../data/site';
 ---
@@ -24,12 +24,12 @@ import { site } from '../data/site';
 				<p class="hero__lead">Un percorso nutrizionale fatto di ascolto e consapevolezza, lontano da diete rigide e rinunce.</p>
 				<div class="hero__actions">
 					<ButtonLink href={site.bookingUrl} external>Prenota una prima visita</ButtonLink>
-					<ButtonLink href="#contatti-rapidi" variant="secondary">Contattami</ButtonLink>
+					<ButtonLink href="/contattami" variant="secondary">Contattami</ButtonLink>
 				</div>
 			</div>
 
 			<div class="hero__portrait">
-				<img src="/images/noemi-grigoletto.png" alt={site.portrait.alt} width="1280" height="1351" fetchpriority="high" />
+				<img src={site.portrait.src} alt={site.portrait.alt} width={site.portrait.width} height={site.portrait.height} fetchpriority="high" />
 			</div>
 		</div>
 	</section>
@@ -74,32 +74,7 @@ import { site } from '../data/site';
 			<h2 id="philosophy-title">Rendere la sana alimentazione un’abitudine spontanea e consapevole.</h2>
 			<p class="philosophy-section__lead">Anche la mia storia personale mi ha insegnato quanto falsi miti e mode alimentari possano allontanarci dall’ascolto del corpo. Insieme faremo un percorso che ti porterà a raggiungere il tuo obiettivo e a mantenerlo attraverso la creazione di sane abitudini che diventeranno il tuo stile di vita.</p>
 			<p class="philosophy-section__reminder">Ricordati che l’importante non è la velocità con cui raggiungi il tuo obiettivo, ma credere fermamente di poterlo raggiungere.</p>
-			<!-- impeccable-carbonize-start 51cf2836 -->
-			<style data-impeccable-css="51cf2836">
-			[data-impeccable-variants="51cf2836"] [data-impeccable-variant="1"] > .mission-closing-clear {
-			margin: 0;
-			color: var(--color-terracotta);
-			font: 700 clamp(1.25rem, 2.1vw, 1.5rem)/1.35 var(--font-sans);
-			}
-			
-			[data-impeccable-variants="51cf2836"] [data-impeccable-variant="2"] > .mission-closing-warm {
-			margin: 0;
-			color: var(--color-cocoa);
-			font: italic 400 clamp(1.4rem, 2.4vw, 1.8rem)/1.35 var(--font-display);
-			}
-			
-			[data-impeccable-variants="51cf2836"] [data-impeccable-variant="3"] > .mission-closing-strong {
-			max-width: 22ch;
-			margin: 0 auto;
-			color: var(--color-cocoa);
-			font: 700 clamp(1.55rem, 2.8vw, 2.1rem)/1.25 var(--font-sans);
-			text-wrap: balance;
-			}
-			</style>
-			<!-- impeccable-carbonize-end 51cf2836 -->
-			<div data-impeccable-variant="1" style="display: contents">
-			  <p class="mission-closing-clear">Io sono qui per accompagnarti.</p>
-			</div>
+			<p class="philosophy-section__closing">Io sono qui per accompagnarti.</p>
 		</div>
 	</section>
 
@@ -126,12 +101,16 @@ import { site } from '../data/site';
 			<h2 id="reviews-title">Recensioni</h2>
 			<p id="reviews-hint">Scorri per leggere le recensioni.</p>
 			<div class="reviews-track" role="region" aria-labelledby="reviews-title" aria-describedby="reviews-hint" tabindex="0">
-				{reviews.map(({ name, quote }) => (
-					<figure class="review-card">
-						<figcaption><strong>{name}</strong></figcaption>
-						<span class="review-card__rating" role="img" aria-label="5 stelle su 5">★★★★★</span>
-						<blockquote>{quote}</blockquote>
-					</figure>
+				{reviewColumns.map((column) => (
+					<div class="reviews-column">
+						{column.map(({ name, quote }) => (
+							<figure class="review-card">
+								<figcaption><strong>{name}</strong></figcaption>
+								<span class="review-card__rating" role="img" aria-label="5 stelle su 5">★★★★★</span>
+								<blockquote>{quote}</blockquote>
+							</figure>
+						))}
+					</div>
 				))}
 			</div>
 		</div>
@@ -178,7 +157,7 @@ import { site } from '../data/site';
 	}
 
 	:global(main:has(.hero) .button-link--primary) {
-		background: linear-gradient(135deg, #835039, #a16d50);
+		background: linear-gradient(135deg, #835039, #925f47);
 		box-shadow: 0 0.8rem 1.8rem rgb(82 70 62 / 0.18);
 	}
 
@@ -193,17 +172,10 @@ import { site } from '../data/site';
 
 	.hero__grid {
 		display: grid;
-		min-height: min(48rem, calc(100svh - 6rem));
 		grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
 		align-items: center;
 		gap: clamp(2rem, 5vw, 6rem);
-		padding-top: clamp(4rem, 8vw, 8rem);
-	}
-
-	.hero__content {
-		position: relative;
-		z-index: 2;
-		padding-bottom: clamp(4rem, 8vw, 8rem);
+		padding-block: clamp(2.75rem, 6vw, 5.5rem);
 	}
 
 	.hero h1 {
@@ -244,8 +216,7 @@ import { site } from '../data/site';
 		position: relative;
 		align-self: center;
 		justify-self: center;
-		width: min(100%, 30rem);
-		margin-block: 3rem 0;
+		width: min(100%, 28rem);
 	}
 
 	.hero__portrait img {
@@ -321,8 +292,9 @@ import { site } from '../data/site';
 	.philosophy-section__closing {
 		margin: 0;
 		color: var(--color-terracotta);
-		font-size: 1.05rem;
-		font-weight: 750;
+		font-size: clamp(1.25rem, 2.1vw, 1.5rem);
+		font-weight: 700;
+		line-height: 1.35;
 	}
 
 	.training-section {
@@ -434,13 +406,18 @@ import { site } from '../data/site';
 		scroll-snap-type: x mandatory;
 	}
 
+	.reviews-column {
+		display: grid;
+		gap: 0.75rem;
+		scroll-snap-align: start;
+	}
+
 	.review-card {
 		margin: 0;
 		padding: clamp(1.25rem, 3vw, 2rem);
 		border: var(--border);
 		border-radius: var(--radius-lg);
 		background: var(--color-paper);
-		scroll-snap-align: start;
 	}
 
 	.review-card figcaption {
@@ -465,7 +442,6 @@ import { site } from '../data/site';
 
 	@media (max-width: 64rem) {
 		.hero__grid {
-			min-height: auto;
 			grid-template-columns: 1fr 0.8fr;
 		}
 
@@ -475,10 +451,6 @@ import { site } from '../data/site';
 		.hero__grid {
 			grid-template-columns: 1fr;
 			padding-top: 4rem;
-		}
-
-		.hero__content {
-			padding-bottom: 0;
 		}
 
 		.hero__portrait {

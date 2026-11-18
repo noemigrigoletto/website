@@ -8,7 +8,9 @@ npm install
 
 ## Development server
 
-Use Astro's background server for this repository:
+Before starting a new Astro server, check local listeners with `lsof -nP -iTCP -sTCP:LISTEN`. Astro's status command may miss older instances. Verify each candidate's working directory with `lsof -a -p <pid> -d cwd`, then stop stale instances for this project. Reuse the current preview during an active Impeccable Live session.
+
+The Astro Dev Toolbar is disabled in the project configuration. Use Astro's background server for this repository:
 
 ```sh
 npx astro dev --background

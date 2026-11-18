@@ -1,7 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PagePlaceholder from '../components/sections/PagePlaceholder.astro';
+import ButtonLink from '../components/ui/ButtonLink.astro';
+import '../styles/service-pages.css';
 ---
-<BaseLayout title="Chi sono | Noemi Grigoletto, Dietista" description="Formazione, storia personale e approccio professionale della dietista Noemi Grigoletto." noindex>
-	<PagePlaceholder eyebrow="Chi sono" title="Una storia personale, diventata una professione." description="Qui racconteremo la formazione di Noemi all’Università di Padova, le esperienze di tirocinio, il suo rapporto con l’alimentazione e la missione che guida il suo lavoro." />
+
+<BaseLayout title="Chi sono | Noemi Grigoletto" description="La formazione e la missione di Noemi Grigoletto, dietista nutrizionista.">
+	<div class="page-shell service-page">
+		<h1 class="service-page__title--italic">Chi sono</h1>
+		<div class="service-page__grid">
+			<section class="service-page__panel">
+				<h2>La mia formazione</h2>
+				<p>Mi sono laureata in Dietistica all’Università degli Studi di Padova e ho conseguito il master in nutrizione sportiva SANIS.</p>
+				<ButtonLink href="/#training-title" variant="text">Laurea, tirocini e master</ButtonLink>
+			</section>
+			<section class="service-page__panel">
+				<h2>La mia missione</h2>
+				<p>Voglio aiutarti a rendere la sana alimentazione un’abitudine spontanea e consapevole.</p>
+				<ButtonLink href="/#philosophy-title" variant="text">Leggi la mia missione</ButtonLink>
+			</section>
+		</div>
+	</div>
 </BaseLayout>

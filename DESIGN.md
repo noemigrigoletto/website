@@ -3,6 +3,8 @@ name: Noemi Grigoletto
 description: Warm editorial design for an Italian dietitian’s website.
 colors:
   terracotta: "#ae674b"
+  action-brown: "#835039"
+  action-brown-light: "#925f47"
   cocoa: "#321d17"
   ivory: "#fff9f2"
   paper: "#fffdf9"
@@ -35,7 +37,7 @@ spacing:
 
 ## Overview
 
-The existing site uses warm editorial styling and a clear professional service structure. Noemi’s portrait anchors the homepage, with an open silhouette over the hero background. The original mark identifies the site in the shared header and footer.
+The existing site uses warm editorial styling and a clear professional service structure. Noemi’s portrait anchors the homepage as a transparent cutout with clean edges. The original mark identifies the site in the shared header and footer.
 
 ## Colors
 
@@ -43,11 +45,11 @@ The shared shell and internal pages use the base cocoa, ivory, paper and terraco
 
 ## Typography
 
-The shared shell and internal routes use Open Sans, Simonetta and Droid Serif. On the homepage, Poppins provides the body and bold headings. Lora italic provides emphasis in the hero and mission.
+The shared shell and internal routes use Open Sans, Simonetta and Droid Serif. On the homepage, Poppins provides the body and bold headings. Lora italic provides emphasis in the hero, mission and designated internal titles.
 
 ## Layout
 
-The shared page shell uses fluid gutters and a maximum content width of 76rem. The hero and training sections become single-column layouts on narrow screens. The two service entry cards sit side by side and reviews use a horizontally scrollable row.
+The shared page shell uses fluid gutters and a maximum content width of 76rem. The hero and training sections become single-column layouts on narrow screens. The two service entry cards sit side by side and reviews use horizontally scrollable columns, with shorter reviews paired vertically.
 
 ## Shapes
 
@@ -62,4 +64,4 @@ Cards use rounded corners and thin borders. Buttons have a pill silhouette. The 
 ## Do's and Don'ts
 
 - Keep keyboard focus visible and respect reduced motion preferences.
-- Preserve the warm palette, the original mark and the frameless portrait.
+- Preserve the warm palette, original mark and portrait with clean edges. Pair the workshop and evening photos with their sections.

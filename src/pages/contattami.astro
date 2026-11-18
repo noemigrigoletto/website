@@ -1,7 +1,41 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PagePlaceholder from '../components/sections/PagePlaceholder.astro';
+import ButtonLink from '../components/ui/ButtonLink.astro';
+import { site } from '../data/site';
+import '../styles/service-pages.css';
 ---
-<BaseLayout title="Contattami | Noemi Grigoletto, Dietista" description="Contatta la dietista Noemi Grigoletto via email o telefono, oppure prenota una prima visita." noindex>
-	<PagePlaceholder eyebrow="Contattami" title="Il primo passo può essere una semplice domanda." description="La pagina riunirà email, telefono, prenotazione, Instagram e Facebook, con un’interfaccia che apre il client di posta senza simulare l’invio di un messaggio." />
+
+<BaseLayout title="Contattami | Noemi Grigoletto" description="Scrivi o telefona alla dietista Noemi Grigoletto, oppure prenota una prima visita.">
+	<div class="page-shell service-page">
+		<h1 class="service-page__title--italic">Contattami</h1>
+		<div class="service-page__grid">
+			<section class="service-page__panel">
+				<h2>Scrivimi o chiamami</h2>
+				<ul class="contact-links">
+					<li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+					<li><a href={site.phoneHref}>{site.phoneDisplay}</a></li>
+				</ul>
+			</section>
+			<section class="service-page__panel">
+				<h2>Prenota una visita</h2>
+				<p>Per prenotare una prima visita, compila il modulo online.</p>
+				<ButtonLink href={site.bookingUrl} external>Prenota una prima visita</ButtonLink>
+			</section>
+		</div>
+	</div>
 </BaseLayout>
+
+<style>
+	.service-page__panel .contact-links {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.contact-links a {
+		display: inline-flex;
+		align-items: center;
+		min-height: 2.75rem;
+		overflow-wrap: anywhere;
+	}
+</style>
