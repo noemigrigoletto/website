@@ -1,6 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ButtonLink from '../components/ui/ButtonLink.astro';
+import { site } from '../data/site';
 import '../styles/service-pages.css';
+
+const inquiryBody = 'Buongiorno,\r\n\r\nSono [Nome]\r\n\r\nLe scrivo per chiedere informazioni riguardo...';
+const inquiryHref = `mailto:${site.email}?subject=${encodeURIComponent('Informazioni sull’educazione alimentare')}&body=${encodeURIComponent(inquiryBody)}`;
 ---
 
 <BaseLayout title="Educazione alimentare | Noemi Grigoletto" description="Laboratori di educazione alimentare, formazioni aziendali e serate informative." noindex>
@@ -17,7 +22,7 @@ import '../styles/service-pages.css';
 			<section class="service-page__panel education-feature">
 				<div>
 					<h2>Formazioni aziendali</h2>
-					<p>Incontri per affrontare le scelte alimentari nella giornata lavorativa, dalla pausa pranzo all’organizzazione dei pasti.</p>
+					<p>Incontri di formazione a tema sana alimentazione e gestione di essa nella giornata lavorativa dalla pausa pranzo alla gestione dei pasti..</p>
 				</div>
 				<img src="/images/noemi-formazioni-aziendali.webp" alt="Noemi al computer davanti alla proiezione sul piatto sano" width="1000" height="1250" loading="lazy" decoding="async" />
 			</section>
@@ -28,6 +33,9 @@ import '../styles/service-pages.css';
 				</div>
 				<img src="/images/noemi-serate-informative.webp" alt="Noemi presenta una serata informativa sui carboidrati" width="1200" height="1450" loading="lazy" decoding="async" />
 			</section>
+			<div class="service-page__actions">
+				<ButtonLink href={inquiryHref}>Chiedi informazioni</ButtonLink>
+			</div>
 		</div>
 	</div>
 </BaseLayout>

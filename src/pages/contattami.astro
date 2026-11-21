@@ -21,6 +21,14 @@ import '../styles/service-pages.css';
 				<p class="booking-intro">Per prenotare una prima visita, compila il modulo online.</p>
 				<ButtonLink href={site.bookingUrl} external>Prenota una prima visita</ButtonLink>
 			</section>
+			<section class="service-page__panel contact-locations">
+				<h2>Dove mi trovi</h2>
+				<ul class="locations-list">
+					<li><strong>Studio privato</strong><br />Via Marosticana 126, 36031 Dueville</li>
+					<li><strong>Studio Bambù</strong><br />Via Cà del Luogo 6, 36050 Bolzano Vicentino</li>
+					<li><strong>Online</strong><br />Videochiamata su Meet o Zoom</li>
+				</ul>
+			</section>
 		</div>
 	</div>
 </BaseLayout>
@@ -28,11 +36,16 @@ import '../styles/service-pages.css';
 <style>
 	.booking-intro { margin-bottom: 1.25rem; }
 
-	.service-page__panel .contact-links {
+	.contact-locations { grid-column: 1 / -1; }
+
+	.service-page__panel .contact-links,
+	.service-page__panel .locations-list {
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
+
+	.locations-list li + li { margin-top: 0.85rem; }
 
 	.contact-links a {
 		display: inline-flex;

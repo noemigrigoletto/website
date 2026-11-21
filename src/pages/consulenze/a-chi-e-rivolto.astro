@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ButtonLink from '../../components/ui/ButtonLink.astro';
 import Icon from '../../components/ui/Icon.astro';
+import { site } from '../../data/site';
 import '../../styles/service-pages.css';
 
 const areas = [
@@ -22,10 +23,10 @@ const areas = [
 	{
 		title: 'Esigenze specifiche',
 		icon: 'special',
-		items: ['Infanzia e adolescenza', 'Gravidanza e allattamento', 'Menopausa', 'Età senile', 'Alimentazione vegetariana e vegana'],
+		items: ['Bambini e adolescenti nelle diverse fasi della crescita e dello sviluppo', 'Gravidanza e allattamento', 'Menopausa', 'Età senile', 'Alimentazione vegetariana e vegana'],
 	},
 	{
-		title: 'Nutrizione e condizioni cliniche',
+		title: 'Nutrizione e patologie',
 		icon: 'clinical',
 		items: [
 			'Diabete e alterazioni della glicemia',
@@ -38,7 +39,7 @@ const areas = [
 		],
 	},
 	{
-		title: 'Nutrizione e sport',
+		title: 'Attività fisica e sport',
 		icon: 'movement',
 		description: 'Percorsi alimentari personalizzati per supportare allenamento, performance e recupero.',
 	},
@@ -60,7 +61,10 @@ const areas = [
 				</section>
 			))}
 		</div>
-		<ButtonLink href="/consulenze/come-si-svolge" class="next-link">Come si svolge</ButtonLink>
+		<div class="service-page__actions">
+			<ButtonLink href={site.bookingUrl} class="visit-booking" external>Prenota una prima visita</ButtonLink>
+			<ButtonLink href="/consulenze/come-si-svolge" variant="secondary">Come si svolge</ButtonLink>
+		</div>
 	</div>
 </BaseLayout>
 
@@ -94,10 +98,6 @@ const areas = [
 		border-radius: var(--radius-sm);
 		background: var(--color-blush-light);
 		color: #895b42;
-	}
-
-	:global(.next-link) {
-		margin-top: 1.5rem;
 	}
 
 	@media (max-width: 64rem) {

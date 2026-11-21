@@ -68,6 +68,22 @@
 	font-size: 0.875rem;
 }
 
+.service-page__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75rem;
+	margin-top: 1.5rem;
+}
+
+.service-page .visit-booking {
+	min-height: 4.75rem;
+	background: #835039;
+	color: #fffdf9;
+	font-size: 1.125rem;
+	text-transform: uppercase;
+}
+
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
 	.service-page__grid .button-link {
 		transition-duration: 350ms;
