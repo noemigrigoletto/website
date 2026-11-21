@@ -600,3 +600,25 @@ h3 {
 		animation-iteration-count: 1 !important;
 	}
 }
+
+.disclosure > summary {
+	cursor: pointer;
+	list-style: none;
+}
+
+.disclosure > summary::-webkit-details-marker { display: none; }
+
+.disclosure > summary::before {
+	display: inline-block;
+	width: 0.45em;
+	height: 0.45em;
+	margin-inline: 0.15em 0.7em;
+	border: solid currentColor;
+	border-width: 0 2px 2px 0;
+	transform: translateY(-0.08em) rotate(-45deg);
+	content: '';
+}
+
+.disclosure[open] > summary::before {
+	transform: translateY(-0.14em) rotate(45deg);
+}

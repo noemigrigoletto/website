@@ -16,17 +16,17 @@ const foodDiary = site.resources[1];
 			<h2>Prima consulenza nutrizionale</h2>
 			<p class="visit-duration"><strong>Durata: 1 ora</strong></p>
 			<ol>
-				<li>Anamnesi generale ed eventuale anamnesi delle patologie</li>
-				<li>Anamnesi alimentare</li>
-				<li>Rilevazione dei parametri antropometrici e storia del peso</li>
-				<li>Stima della composizione corporea con BIA (bioimpedenza)</li>
-				<li>Individuazione degli obiettivi del piano nutrizionale</li>
-				<li>Individuazione dei possibili ostacoli al raggiungimento degli obiettivi</li>
+				<li><strong>Anamnesi generale</strong> ed eventuale anamnesi delle patologie</li>
+				<li><strong>Anamnesi alimentare</strong></li>
+				<li>Rilevazione dei <strong>parametri antropometrici</strong> e storia del peso</li>
+				<li>Stima della <strong>composizione corporea</strong> con BIA (bioimpedenza)</li>
+				<li>Individuazione degli <strong>obiettivi</strong> del piano nutrizionale</li>
+				<li>Individuazione dei possibili <strong>ostacoli</strong> al raggiungimento degli obiettivi</li>
 			</ol>
 
 			<ButtonLink href={site.bookingUrl} class="visit-booking" external>Prenota una prima visita</ButtonLink>
 
-			<details class="visit-preparation">
+			<details class="visit-disclosure visit-preparation disclosure">
 				<summary>Cosa portare alla prima visita</summary>
 				<p>Non è obbligatorio portare nulla. Se vuoi, puoi portare:</p>
 				<ul>
@@ -38,20 +38,22 @@ const foodDiary = site.resources[1];
 		</section>
 
 		<section class="service-page__panel">
-			<h2>Dopo la consulenza</h2>
-			<p>Entro 5 giorni lavorativi riceverai via email:</p>
-			<ul class="visit-deliverables">
-				<li>Il tuo piano alimentare personalizzato</li>
-				<li>Un menù settimanale basato sui tuoi gusti</li>
-				<li>Eventuali altri materiali utili al percorso nutrizionale</li>
-			</ul>
-			<p>Tra una visita e la successiva puoi contare sul mio supporto via email.</p>
+			<details class="visit-disclosure visit-aftercare disclosure">
+				<summary>Dopo la consulenza</summary>
+				<p>Entro <strong>5 giorni</strong> lavorativi riceverai via email:</p>
+				<ul class="visit-deliverables">
+					<li>Il tuo <strong>piano alimentare personalizzato</strong></li>
+					<li>Un <strong>menù settimanale</strong> basato sui tuoi gusti</li>
+					<li>Eventuali <strong>altri materiali utili</strong> al percorso nutrizionale</li>
+				</ul>
+				<p>Tra una visita e la successiva puoi contare sul mio supporto via email.</p>
+			</details>
 		</section>
 
 		<section class="service-page__panel">
 			<h2>Consulenze nutrizionali di controllo</h2>
 			<p class="visit-duration"><strong>Durata: 30 minuti</strong></p>
-			<p>Le visite servono a monitorare l’efficacia dell’intervento nutrizionale. Gli intervalli tra i controlli dipendono dalle tue esigenze e dal tipo di percorso concordato.</p>
+			<p>Le visite servono a monitorare l’<strong>efficacia</strong> dell’intervento nutrizionale. La frequenza dei controlli dipende dalle tue <strong>esigenze</strong> e dal <strong>tipo di percorso concordato</strong>.</p>
 		</section>
 	</div>
 </BaseLayout>
@@ -74,7 +76,7 @@ const foodDiary = site.resources[1];
 		margin-top: 0.85rem;
 	}
 
-	.visit-preparation summary {
+	.visit-disclosure summary {
 		width: fit-content;
 		padding: 0.65rem 1rem;
 		border-radius: 999px;
@@ -86,7 +88,9 @@ const foodDiary = site.resources[1];
 		text-transform: uppercase;
 	}
 
-	.visit-preparation p {
+	.visit-aftercare summary { background: #e8d9bc; }
+
+	.visit-disclosure p {
 		margin: 1rem 0 0.5rem;
 	}
 
