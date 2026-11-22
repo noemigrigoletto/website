@@ -425,7 +425,7 @@ h3 {
 .contact-band__inner {
 	position: relative;
 	display: grid;
-	grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 0.6fr);
+	grid-template-columns: 1fr;
 	align-items: center;
 	gap: 3rem;
 	padding-block: clamp(4rem, 7vw, 6.5rem);
@@ -443,8 +443,10 @@ h3 {
 }
 
 .contact-band__actions {
-	display: grid;
-	gap: 0.75rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
 }
 
 .site-footer {
@@ -563,10 +565,6 @@ h3 {
 	.contact-band__inner,
 	.site-footer__grid {
 		grid-template-columns: 1fr;
-	}
-
-	.contact-band__actions {
-		justify-items: stretch;
 	}
 
 	.site-footer__grid {
