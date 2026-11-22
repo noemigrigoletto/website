@@ -35,7 +35,7 @@ const inquiryHref = `mailto:${site.email}?subject=${encodeURIComponent('Informaz
 			</section>
 			<div class="service-page__actions">
 				<ButtonLink href={inquiryHref}>Chiedi informazioni</ButtonLink>
-				<ButtonLink href="/#di-cosa-mi-occupo" variant="secondary">Torna a sezione precedente</ButtonLink>
+				<ButtonLink href="/#di-cosa-mi-occupo" variant="secondary" class="back-link">Torna alla sezione precedente</ButtonLink>
 			</div>
 		</div>
 	</div>
@@ -51,6 +51,15 @@ const inquiryHref = `mailto:${site.email}?subject=${encodeURIComponent('Informaz
 	.service-page__actions {
 		flex-direction: column;
 		align-items: flex-start;
+	}
+
+	:global(.back-link) {
+		flex-direction: row-reverse;
+	}
+
+	:global(.back-link svg),
+	:global(.back-link:hover svg) {
+		transform: rotate(180deg);
 	}
 
 	.education-feature {
