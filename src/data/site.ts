@@ -17,6 +17,10 @@ export const site = {
 	phoneDisplay: '+39 349 241 8586',
 	phoneHref: 'tel:+393492418586',
 	bookingUrl: 'https://form.jotform.com/240092101421033',
+	locations: [
+		{ name: 'Studio privato', address: 'Via Marosticana 126, 36031 Dueville', mapUrl: 'https://maps.app.goo.gl/jbK6tU2Wt99QprQWA' },
+		{ name: 'Studio Bambù', address: 'Via Cà del Luogo 6, 36050 Bolzano Vicentino', mapUrl: 'https://maps.app.goo.gl/1LAMbqMKqZKWYKnu9' },
+	],
 	portrait: {
 		src: '/images/noemi-profilo-trasparente.webp',
 		alt: 'Noemi Grigoletto, dietista',
@@ -35,7 +39,7 @@ export const site = {
 		},
 		{
 			label: 'Facebook',
-			href: 'https://www.facebook.com/profile.php?id=61555231928379',
+			href: 'https://www.facebook.com/dietistanoemigrigoletto/',
 		},
 	] satisfies SocialLink[],
 	resources: [

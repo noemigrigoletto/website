@@ -49,7 +49,7 @@ The shared shell and internal routes use Open Sans, Simonetta and Droid Serif. O
 
 ## Layout
 
-The shared page shell uses fluid gutters and a maximum content width of 76rem. The hero and training sections become single-column layouts on narrow screens. The two service entry cards sit side by side. Reviews stack as expandable rows, with the first open on page load.
+The shared page shell uses fluid gutters and a maximum content width of 76rem. The hero and training sections become single-column layouts on narrow screens. The two service entry cards sit side by side. Reviews are equal square cards in a horizontal scroll list.
 
 ## Shapes
 
@@ -60,7 +60,7 @@ Cards use rounded corners and thin borders. Buttons have a pill silhouette. The 
 - The main booking action is a filled brown pill. Secondary actions use an outline.
 - The audience page groups its five topics into stacked expandable rows. The expanded mobile menu uses the same Lora italic as the homepage.
 - The service links are square, fully clickable cards with a heading, an icon and an arrow.
-- Review rows show the author and five gold stars in the summary and the full quotation when expanded.
+- Review cards show the name above five gold stars. Long quotes have a short excerpt and an «Altro…» disclosure.
 
 - The consultation process uses the same pill treatment for preparation and follow-up disclosures, with separate blush and sand tones.
 

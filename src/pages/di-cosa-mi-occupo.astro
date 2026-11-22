@@ -35,6 +35,7 @@ const inquiryHref = `mailto:${site.email}?subject=${encodeURIComponent('Informaz
 			</section>
 			<div class="service-page__actions">
 				<ButtonLink href={inquiryHref}>Chiedi informazioni</ButtonLink>
+				<ButtonLink href="/#di-cosa-mi-occupo" variant="secondary">Torna a sezione precedente</ButtonLink>
 			</div>
 		</div>
 	</div>
@@ -45,6 +46,11 @@ const inquiryHref = `mailto:${site.email}?subject=${encodeURIComponent('Informaz
 		display: grid;
 		gap: 1rem;
 		max-width: 60rem;
+	}
+
+	.service-page__actions {
+		flex-direction: column;
+		align-items: flex-start;
 	}
 
 	.education-feature {

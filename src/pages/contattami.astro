@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ButtonLink from '../components/ui/ButtonLink.astro';
+import Icon from '../components/ui/Icon.astro';
 import { site } from '../data/site';
 import '../styles/service-pages.css';
 ---
@@ -12,8 +13,8 @@ import '../styles/service-pages.css';
 			<section class="service-page__panel">
 				<h2>Scrivimi o chiamami</h2>
 				<ul class="contact-links">
-					<li><a href={`mailto:${site.email}`}>{site.email}</a></li>
-					<li><a href={site.phoneHref}>{site.phoneDisplay}</a></li>
+					<li><a href={`mailto:${site.email}`}><Icon name="mail" size={20} /><span>{site.email}</span></a></li>
+					<li><a href={site.phoneHref}><Icon name="phone" size={20} /><span>{site.phoneDisplay}</span></a></li>
 				</ul>
 			</section>
 			<section class="service-page__panel">
@@ -24,8 +25,18 @@ import '../styles/service-pages.css';
 			<section class="service-page__panel contact-locations">
 				<h2>Dove mi trovi</h2>
 				<ul class="locations-list">
-					<li><strong>Studio privato</strong><br />Via Marosticana 126, 36031 Dueville</li>
-					<li><strong>Studio Bambù</strong><br />Via Cà del Luogo 6, 36050 Bolzano Vicentino</li>
+					{site.locations.map(({ name, address, mapUrl }) => (
+						<li class="physical-location">
+							<Icon name="location" size={21} />
+							<div>
+								<strong>{name}</strong><br />
+								{address}<br />
+								<a class="location-map" href={mapUrl} aria-label={`Apri in Google Maps: ${name}`}>
+									<span>Apri in Google Maps</span><span aria-hidden="true">↗</span>
+								</a>
+							</div>
+						</li>
+					))}
 					<li><strong>Online</strong><br />Videochiamata su Meet o Zoom</li>
 				</ul>
 			</section>
@@ -35,6 +46,7 @@ import '../styles/service-pages.css';
 
 <style>
 	.booking-intro { margin-bottom: 1.25rem; }
+	.service-page__grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 23rem), 1fr)); }
 
 	.contact-locations { grid-column: 1 / -1; }
 
@@ -47,10 +59,28 @@ import '../styles/service-pages.css';
 
 	.locations-list li + li { margin-top: 0.85rem; }
 
+	.physical-location { display: flex; align-items: flex-start; gap: 0.65rem; }
+	.physical-location :global(svg) { flex-shrink: 0; margin-top: 0.15rem; color: var(--color-terracotta); }
+	.location-map {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		min-height: 2.75rem;
+		color: var(--color-terracotta);
+		font-weight: 700;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+	.location-map:hover { text-decoration-thickness: 2px; }
+	.location-map:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; border-radius: 2px; }
+
 	.contact-links a {
 		display: inline-flex;
 		align-items: center;
+		gap: 0.5rem;
 		min-height: 2.75rem;
-		overflow-wrap: anywhere;
+		font-size: clamp(0.75rem, 3.5vw, 0.9375rem);
+		white-space: nowrap;
 	}
+	.contact-links a :global(svg) { flex-shrink: 0; color: var(--color-terracotta); }
 </style>

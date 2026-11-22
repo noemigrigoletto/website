@@ -8,7 +8,8 @@ export type IconName =
 	| 'life'
 	| 'movement'
 	| 'clinical'
-	| 'special';
+	| 'special'
+	| 'location';
 
 interface Props {
 	name: IconName;
@@ -28,4 +29,5 @@ const { name, size = 24 } = Astro.props;
 	{name === 'movement' && <><circle cx="14.8" cy="4.8" r="1.5"></circle><path d="m10.5 8.2 3.2-1.1 2.5 3.2 2.8 1.2M13.7 8.2l-2 4.3 3.2 2.3 1.5 4.2M11.7 12.5 8 14.1 5.5 18"></path></>}
 	{name === 'clinical' && <><path d="M20 9.3c0 5.3-8 10.2-8 10.2S4 14.6 4 9.3A4.3 4.3 0 0 1 8.3 5c1.6 0 3 .9 3.7 2.1A4.3 4.3 0 0 1 20 9.3Z"></path><path d="M7.4 11.8h2.4l1.2-2.2 2 4 1.2-1.8h2.4"></path></>}
 	{name === 'special' && <><circle cx="12" cy="12" r="8.5"></circle><path d="M7.3 14.8c4.8.4 8.2-1.8 9.7-6.4-4.7-.1-7.9 2-9.7 6.4Z"></path><path d="M6.8 17.2c1.4-3 3.7-5.2 7-6.7"></path></>}
+	{name === 'location' && <path fill="currentColor" stroke="none" fill-rule="evenodd" d="M12 1.5a7 7 0 0 1 7 7c0 3.5-3.6 9.5-7 14-3.4-4.5-7-10.5-7-14a7 7 0 0 1 7-7Zm0 3.6a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8Z"></path>}
 </svg>

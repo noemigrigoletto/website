@@ -35,9 +35,7 @@ const foodDiary = site.resources[1];
 						<a href={foodDiary.href} target="_blank" rel="noreferrer">Scarica il modello del diario alimentare</a></li>
 				</ul>
 			</details>
-		</section>
 
-		<section class="service-page__panel">
 			<details class="visit-disclosure visit-aftercare disclosure">
 				<summary>Dopo la consulenza</summary>
 				<p>Entro <strong>5 giorni</strong> lavorativi riceverai via email:</p>
@@ -72,8 +70,12 @@ const foodDiary = site.resources[1];
 
 	.visit-deliverables { margin-block: 1rem; }
 
-	.visit-preparation {
+	.visit-disclosure {
 		margin-top: 0.85rem;
+	}
+
+	.visit-disclosure + .visit-disclosure {
+		margin-top: 1.5rem;
 	}
 
 	.visit-disclosure summary {
