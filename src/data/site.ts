@@ -12,7 +12,7 @@ export interface DownloadResource {
 export const site = {
 	name: 'Noemi Grigoletto',
 	role: 'Dietista',
-	baseUrl: 'https://noemi.adetomasi.com',
+	baseUrl: 'https://noemigrigoletto.com',
 	email: 'dietista@noemigrigoletto.com',
 	phoneDisplay: '+39 349 241 8586',
 	phoneHref: 'tel:+393492418586',

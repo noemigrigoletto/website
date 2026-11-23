@@ -42,7 +42,7 @@ Last reviewed: 2026-09-18.
 
 ## Delivery boundaries
 
-- Website feature work does not include deployment, hosting, CI/CD, AWS, or infrastructure unless the user explicitly changes the scope.
+- GitHub Pages is the intended hosting target for the website at `noemigrigoletto.com`. The GitHub Actions workflow builds and deploys the static output; configuring Pages and DNS remains a separate operational step. AWS infrastructure remains outside ordinary website feature work.
 - Infrastructure source already exists in the repository, but live infrastructure mutation is prohibited.
 
 ## Homepage typography
